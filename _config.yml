@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: Pratheek B
 description: PhD candidate at CSA, IISc.
+show_downloads: false
+is_user_page: false
