@@ -21,7 +21,7 @@ In the proceedings of 16th ACM ASIA Conference on Computer and Communications Se
 
 
 <h4> <strong> [HPCA 21] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers/hpca21_DWS.pdf" title="HPCA 21"> Improving GPU Multi-tenancy with Page Walk Stealing </a> </h4>
-Pratheek B, Jawalkar Neha Prashant, Arkaprava Basu
+<p>Pratheek B, Jawalkar Neha Prashant, Arkaprava Basu</p>
 In the proceedings of 27th IEEE International Symposium on High-Performance Computer Architecture, Seoul, South Korea, February, 2021. 
 Both Pratheek and Neha contributed equally.
 <p color="red"> Best Paper Nominee </p>
