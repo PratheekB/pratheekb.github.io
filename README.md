@@ -1,7 +1,7 @@
 <h1> Education </h1>
 
 <h3>PhD (ongoing, Jan. 2020-now) at CSA, IISc</h3>
-<p>Advised by Prof. Arkaprava Basu</p>
+Advised by <a href="https://www.csa.iisc.ac.in/~arkapravab/" > Prof. Arkaprava Basu </a> <br>
 GPA: 8.0/10.0 <br>
 
 
