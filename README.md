@@ -11,6 +11,7 @@
 - [Designing Virtual Memory System of MCM GPUs](https://www.csa.iisc.ac.in/~arkapravab/papers.html)
 
   Jawalkar Neha Prashant*, Pratheek B*, Arkaprava Basu
+  * Both Pratheek and Neha contributed equally.
   
 - [(Mis)managed: A Novel TLB-based Covert Channel on GPUs](https://www.csa.iisc.ac.in/~arkapravab/papers/asiaCCS21_GPUTLBChannel.pdf)
 
@@ -19,5 +20,6 @@
 - [Improving GPU Multi-tenancy with Page Walk Stealing ](https://www.csa.iisc.ac.in/~arkapravab/papers/hpca21_DWS.pdf)
 
   Pratheek B*, Jawalkar Neha Prashant*, Arkaprava Basu
+  * Both Pratheek and Neha contributed equally.
 
 
