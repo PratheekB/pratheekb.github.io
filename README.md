@@ -1,10 +1,10 @@
 ## Education
 
-PhD (ongoing, Jan. 2020-now) at CSA, IISc
-Advised by Prof. Arkaprava Basu
+<p>PhD (ongoing, Jan. 2020-now) at CSA, IISc</p>
+<p>Advised by Prof. Arkaprava Basu</p>
 
-M.Tech (2017-2019) in Computer Science at CSA, IISc
-Major project with Prof. Arkaprava Basu
+<p>M.Tech (2017-2019) in Computer Science at CSA, IISc</p>
+<p>Major project with Prof. Arkaprava Basu</p>
 
 ## Publications
 
