@@ -24,4 +24,4 @@ In the proceedings of 16th ACM ASIA Conference on Computer and Communications Se
 <p>Pratheek B, Jawalkar Neha Prashant, Arkaprava Basu <br>
 In the proceedings of 27th IEEE International Symposium on High-Performance Computer Architecture, Seoul, South Korea, February, 2021. <br>
 Both Pratheek and Neha contributed equally. <br>
-<p color="red"> Best Paper Nominee </p>
+<span style="color:blue"> Best Paper Nominee. </span>
