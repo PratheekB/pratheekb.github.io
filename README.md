@@ -20,7 +20,5 @@
 
   - **Pratheek B**, Jawalkar Neha Prashant, Arkaprava Basu
 
-<dl>
-  <dt> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers.html" title="HPCA 21"> <strong> HPCA 21 </strong> Designing Virtual Memory System of MCM GPUs </dt>
-  <dd> Jawalkar Neha Prashant, Pratheek B, Arkaprava Basu </dd>
-</dl>
+<strong> HPCA 21 </strong> <h3> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers.html" title="HPCA 21"> Designing Virtual Memory System of MCM GPUs <h3>
+Jawalkar Neha Prashant, Pratheek B, Arkaprava Basu 
