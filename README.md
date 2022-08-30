@@ -2,10 +2,12 @@
 
 <h3>PhD (ongoing, Jan. 2020-now) at CSA, IISc</h3>
 <p>Advised by Prof. Arkaprava Basu</p>
+GPA: 8.0/10.0 <br>
 
 
 <h3>M.Tech (2017-2019) in Computer Science at CSA, IISc</h3>
-<p>Major project with Prof. Arkaprava Basu</p>
+Major project with Prof. Arkaprava Basu <br>
+GPA: 8.3/10 <br>
 
 <h1> Publications </h1>
 
