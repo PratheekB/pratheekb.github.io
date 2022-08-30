@@ -20,3 +20,7 @@
 
   - **Pratheek B**, Jawalkar Neha Prashant, Arkaprava Basu
 
+dl>
+  <dt>[Designing Virtual Memory System of MCM GPUs](https://www.csa.iisc.ac.in/~arkapravab/papers.html)</dt>
+  <dd>TJawalkar Neha Prashant, **Pratheek B**, Arkaprava Basu</dd>
+</dl>
