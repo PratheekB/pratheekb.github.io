@@ -21,4 +21,7 @@ Ajay Ashok Nayak, Pratheek B, Vinod Ganapathy, Arkaprava Basu <br>
 
 <strong> [HPCA 21] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers/hpca21_DWS.pdf" title="HPCA 21"> Improving GPU Multi-tenancy with Page Walk Stealing </a> <br>
 Pratheek B, Jawalkar Neha Prashant, Arkaprava Basu <br>
-<span style="color:blue;font-weight:bold"> Best Paper Nominee. </span>
+<span style="color:blue;font-weight:bold"> Best Paper Nominee </span> <br>
+<a href="https://www.csa.iisc.ac.in/~arkapravab/papers/HPCA21_DWS_Talk_video_long.mp4"> Talk Video </a> 
+<a href="https://www.csa.iisc.ac.in/~arkapravab/papers/HPCA21_DWS_Talk_video_short.mp4"> Short Video </a> 
+<a href="https://github.com/csl-iisc/dws"> Code </a>
