@@ -11,7 +11,7 @@ GPA: 8.3/10 <br>
 
 <h1> Publications </h1>
 
-<strong> [MICRO 22] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers.html" title="MICRO 22"> Designing Virtual Memory System of MCM GPUs  </a> <br>
+<strong> [MICRO 22] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers/MICRO22_MGvm.pdf" title="MICRO 22"> Designing Virtual Memory System of MCM GPUs  </a> <br>
 Pratheek B, Neha Jawalkar, Arkaprava Basu  <br>
 
 
