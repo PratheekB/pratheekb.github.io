@@ -11,6 +11,11 @@ GPA: 8.3/10 <br>
 
 <h1> Publications </h1>
 
+
+<strong> [MICRO 24] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers/MICRO24_SUV.pdf" title="MICRO 24"> SUV: Static analysis guided Unified Virtual Memory </a> <br>
+Pratheek B, Guilherme Cox, Jan Vesely, Arkaprava Basu  <br>
+
+
 <strong> [MICRO 22] </strong> <a href="https://www.csa.iisc.ac.in/~arkapravab/papers/MICRO22_MGvm.pdf" title="MICRO 22"> Designing Virtual Memory System of MCM GPUs  </a> <br>
 Pratheek B, Neha Jawalkar, Arkaprava Basu  <br>
 
