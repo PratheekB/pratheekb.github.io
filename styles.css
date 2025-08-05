@@ -82,14 +82,14 @@ body {
   display: block;
   color: #444;
   font-weight: 500;
-  margin-bottom: 0.4em; /* Ensure consistent margin */
+  margin-bottom: 0.4em;
   padding: 0.32em 0 0.32em 0.7em;
   text-decoration: none;
   border-left: 4px solid transparent;
   border-radius: 2px;
   letter-spacing: 0.54px;
   font-size: 1.08em;
-  transition: background 0.05s ease-in-out, color 0.05s ease-in-out, border 0.05s ease-in-out; /* Reduced transition duration */
+  transition: background 0.13s, color 0.17s, border 0.14s;
   width: 100%;
   scroll-behavior: smooth;
 }
@@ -99,8 +99,7 @@ body {
 .sidebar nav a:hover {
   color: #2364aa;
   border-left: 4px solid #2364aa;
-  background: #f9fbfd; /* Slightly lighter background for hover */
-  margin-bottom: 0.4em; /* Prevent margin changes on hover */
+  background: #f1f7fb;
 }
 
 .sidebar .download-cv {
