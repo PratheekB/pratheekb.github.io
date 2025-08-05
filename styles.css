@@ -8,9 +8,9 @@ body {
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #2c3e50; /* Dark blue-gray text */
+  color: #2c3e50; /* Original dark blue-gray text */
   min-height: 100vh;
-  background-color: #f4f6f8; /* Light gray background */
+  background-color: #f4f6f8; /* Original light gray background */
 }
 
 .container {
@@ -232,8 +232,8 @@ li {
 }
 
 .highlight {
-  background-color: #3498db; /* Highlight blue background */
-  color: white; /* Highlight text */
+  color: #3498db; /* Bright blue text for foreground */
+  background-color: transparent; /* Removed background color */
 }
 
 .subtle-highlight {
