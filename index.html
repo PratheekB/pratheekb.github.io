@@ -6,131 +6,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Merriweather:700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --sidebar-bg: #f7f7f7;
-      --border: #e0e0e0;
-      --header-dark: #181818;
-      --blue: #2364aa;
-      --blue-light: #a2bce0;
-      --text-main: #181818;
-      --text-fade: #444;
-      --tag-bg: #2364aa;
-      --background-main: #fff;
-      --card-bg: #fff;
-    }
-    html, body {padding:0; margin:0; background: var(--background-main);}
-    body { font-family: 'Roboto', Arial, sans-serif; color: var(--text-main);}
+    html, body {padding:0; margin:0; background: #fff;}
+    body { font-family: 'Roboto', Arial, sans-serif; color: #181818;}
     .container { display: flex; min-height: 100vh; }
     .sidebar {
-      background: var(--sidebar-bg);
-      color: var(--text-main);
+      background: #f7f7f7;
+      color: #181818;
       width: 250px; min-width:170px; max-width:300px;
       display: flex; flex-direction: column; align-items: center;
-      padding: 2em 0 2.2em 0; z-index:3;
-      border-right: 1.5px solid var(--border); box-shadow: 2px 0 14px #eaeaea13;
+      padding: 2em 0 2em 0;
+      border-right: 1.5px solid #e0e0e0; box-shadow: 2px 0 14px #eaeaea13;
       flex-shrink: 0;
+      position:sticky; top:0; height:100vh; z-index: 100;
     }
     .sidebar .profile-photo {
       width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
-      margin-bottom: 1.1em; background: #f2f2f2; border: 4px solid var(--blue);
+      margin-bottom: 1.1em; background: #f2f2f2; border: 4px solid #2364aa;
       box-shadow:0 3px 18px #cacaca10;
     }
     .sidebar .contact-block {
       font-size: 1em; margin-bottom:1em; text-align:center;
     }
     .sidebar .contact-block a {
-      color: var(--blue); text-decoration: none; display: block;
+      color: #2364aa; text-decoration: none; display: block;
       margin: 0.13em 0; word-break: break-all; transition: color .13s;
     }
-    .sidebar .contact-block a:hover { color: var(--blue-light);}
+    .sidebar .contact-block a:hover { color: #a2bce0;}
     .sidebar nav {
-      margin: 2.1em 0 1.3em 0; width: 94%; text-align:left; display:flex; flex-direction:column; align-items:flex-start;
+      margin: 2em 0 1em 0; width: 93%; text-align:left; display:flex; flex-direction:column; align-items:flex-start;
     }
     .sidebar nav a {
-      display: block; color: var(--text-fade); font-weight: 500;
-      margin-bottom: .42em; padding: 0.32em 0 0.32em .6em; text-decoration: none;
+      display: block; color: #444; font-weight: 500;
+      margin-bottom: .4em; padding: 0.32em 0 0.32em .7em; text-decoration: none;
       border-left: 4px solid transparent; border-radius:2px;
-      letter-spacing:.56px; font-size: 1.06em; transition: background .13s, color .17s, border .14s;
-      width:100%;
+      letter-spacing:.54px; font-size: 1.08em; transition: background .13s, color .17s, border .14s;
+      width:100%; scroll-behavior: smooth;
     }
-    .sidebar nav a.active, .sidebar nav a:hover {
-      color: var(--blue);
-      border-left: 4px solid var(--blue);
+    .sidebar nav a.active, .sidebar nav a:focus, .sidebar nav a:hover {
+      color: #2364aa;
+      border-left: 4px solid #2364aa;
       background: #f1f7fb;
     }
     .sidebar .download-cv {
-      margin-top: 24px; display:inline-block; background:var(--blue); color:#fff; font-weight:600;
+      margin-top: 20px; display:inline-block; background:#2364aa; color:#fff; font-weight:600;
       padding:.5em 1.1em; border-radius:7px; text-decoration:none; letter-spacing:.05em; font-size: 1em;
       text-align:center; border: none; transition:background .15s;
     }
-    .sidebar .download-cv:hover { background: var(--blue-light); color:var(--header-dark);}
-    .main {flex: 1; padding: 2.3em 2vw 1.6em 2vw; background: #fff;}
-    .nameblock {
-      text-align:center; padding-top: .5em; margin-bottom: 1.8em;
+    .sidebar .download-cv:hover { background: #a2bce0; color:#181818;}
+    .main {
+      flex: 1;
+      padding: 2em 2vw 1.3em 2vw;
+      background: #fff;
+      margin-left: 250px;
+      transition: margin-left .2s;
+      min-width: 0;
     }
+    .nameblock { text-align:center; padding-top: .5em; margin-bottom: 2em; }
     .nameblock h1 {
-      font-family: 'Merriweather', serif; color: var(--header-dark);
+      font-family: 'Merriweather', serif; color: #181818;
       font-size: 2em; font-weight: 700;
       letter-spacing: 1px; margin: .1em 0 .1em 0;
     }
     .nameblock .role {
-      color: var(--blue);
-      font-weight: 600;
-      letter-spacing: .5px;
-      font-size: 1.1em;
-      margin-top:0.10em;
+      color: #2364aa;
+      font-weight: 600; letter-spacing: .5px;
+      font-size: 1.1em; margin-top:0.10em;
     }
     .section {
-      background: var(--card-bg); border-radius: 12px;
+      background: #fff; border-radius: 12px;
       max-width: 820px; box-shadow: 0 4px 28px #00000007;
       margin: 0 auto 2em auto; padding: 2em 1.4em 1.2em 1.4em;
       animation: fadein .34s;
-      border: 1.5px solid var(--border);
+      border: 1.5px solid #e0e0e0;
+      scroll-margin-top: 1.5em;
     }
     @keyframes fadein {0%{opacity:0; transform:translateY(18px);}100%{opacity:1; transform: translateY(0);}}
     .section-title {
       font-family: 'Merriweather', serif;
-      color: var(--blue); font-size: 1.15em; font-weight: 700;
-      border-left: 4px solid var(--blue);
+      color: #2364aa; font-size: 1.15em; font-weight: 700;
+      border-left: 4px solid #2364aa;
       padding-left: .64em;
       margin-top: 0; margin-bottom: 1em;
       letter-spacing:.28px;
     }
     ul {padding-left:1.2em;margin-bottom:0;}
     li {margin-bottom:.7em;line-height:1.7;}
-    .tag { background: var(--tag-bg); color: #fff;
+    .tag { background: #2364aa; color: #fff;
       padding: 2.5px 10px; border-radius:12px;font-size:0.91em; margin-right:7px;}
     .meta { color: #5e6875; font-size: 0.95em;}
-    .highlight { color: var(--blue);}
-    a { color: var(--blue); text-decoration: none;}
+    .highlight { color: #2364aa;}
+    a { color: #2364aa; text-decoration: none;}
     a:hover {text-decoration: underline;}
     .paper-link {font-weight:bold;}
-    @media (max-width:700px){
+    /* --- Mobile and small device styles --- */
+    @media (max-width:900px){
       .container { flex-direction:column;}
       .sidebar {
-        position:relative;
-        width:100%;max-width:100%; border-right:none; border-bottom: 1.5px solid var(--border); box-shadow: none;
+        width:100%;max-width:100%; border-right:none; border-bottom: 1.5px solid #e0e0e0; box-shadow: none;
         flex-direction:column; align-items:center; padding:1.3em 0 0.6em 0;
+        height:auto; position:static; top:auto;
       }
-      .sidebar nav {flex-direction:column; width:94%; align-items:flex-start;}
-      .sidebar nav a {padding:.37em 0 .37em .6em; font-size:1.09em;}
-      .main {padding: 1em 0.6em;}
+      .main {margin-left:0px; padding: 1.5em 0.7em .7em 0.7em;}
       .section {padding:1em 0.2em;}
       .sidebar .profile-photo {width:70px;height:70px;}
       .nameblock {margin-bottom: 1em;}
-      .nameblock h1 {font-size: 1.08em;}
+      .nameblock h1 {font-size: 1.14em;}
+    }
+    @media (max-width:480px){
+      .main{padding: 0.5em 0.1em;}
+      .section{padding:.7em 0.01em;}
+      .nameblock h1{font-size:1em;}
+      .sidebar .profile-photo {width:55px;height:55px;}
     }
   </style>
   <script>
-    function showSection(evt, name) {
-      var x = document.getElementsByClassName("section");
-      for (var i = 0; i < x.length; i++) x[i].style.display = "none";
-      var tabs = document.querySelectorAll('.sidebar nav a');
-      tabs.forEach(t => t.classList.remove('active'));
-      document.getElementById(name).style.display = "block";
-      evt.currentTarget.classList.add('active');
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
+    // Highlight the active nav link as the user scrolls
+    document.addEventListener("DOMContentLoaded", function () {
+      function onScroll() {
+        let sections = document.querySelectorAll('.section');
+        let navLinks = document.querySelectorAll('.sidebar nav a');
+        let fromTop = window.scrollY + 20;
+        let currentId;
+        sections.forEach(section => {
+          if (section.offsetTop <= fromTop) {
+            currentId = section.id;
+          }
+        });
+        navLinks.forEach(link => link.classList.remove('active'));
+        if (currentId) {
+          let currLink = document.querySelector('.sidebar nav a[href="#'+currentId+'"]');
+          if(currLink) currLink.classList.add('active');
+        }
+      }
+      // smooth scroll
+      document.querySelectorAll('.sidebar nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if(this.hash) {
+            e.preventDefault();
+            let target = document.getElementById(this.hash.replace('#',''));
+            if(target) {
+              window.scrollTo({ top: target.offsetTop - 12, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+      window.addEventListener("scroll", onScroll);
+      onScroll();
+    });
   </script>
 </head>
 <body>
@@ -144,13 +166,13 @@
       <a href="https://pratheekb.github.io">pratheekb.github.io</a>
     </div>
     <nav>
-      <a href="#" class="active" onclick="showSection(event, 'bio')">Home</a>
-      <a href="#" onclick="showSection(event, 'publications')">Publications</a>
-      <a href="#" onclick="showSection(event, 'awards')">Awards</a>
-      <a href="#" onclick="showSection(event, 'teaching')">Teaching</a>
-      <a href="#" onclick="showSection(event, 'talks')">Talks</a>
-      <a href="#" onclick="showSection(event, 'projects')">Projects</a>
-      <a href="#" onclick="showSection(event, 'contact')">Contact</a>
+      <a href="#bio">Home</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#talks">Talks</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
     <a class="download-cv" href="Pratheek_CV.pdf" download>Download CV</a>
   </aside>
@@ -159,11 +181,13 @@
       <h1>Pratheek B</h1>
       <div class="role">Ph.D. Candidate, Computer Science, IISc</div>
     </div>
-    <div class="section" id="bio" style="display:block;">
+
+    <div class="section" id="bio">
       <div class="section-title">Bio</div>
       <p>I am a <b>Ph.D. candidate at the Indian Institute of Science, Bengaluru</b> specializing in <span class="tag">GPU memory management</span>, <span class="tag">micro-architecture</span>, and <span class="tag">system design</span>. My work focuses on address translation, data placement for large-memory workloads, and the intersection of architecture and systems. Previously, I worked on reverse engineering Nvidia GPUs and remain active in CPU micro-architecture research.</p>
     </div>
-    <div class="section" id="publications" style="display:none;">
+
+    <div class="section" id="publications">
       <div class="section-title">Selected Publications</div>
       <ul>
         <li>
@@ -185,50 +209,9 @@
       </ul>
       <p style="color:#888;font-size:.98em;margin-top:2em;">All links open local PDFs from the <b>papers/</b> folder.</p>
     </div>
-    <div class="section" id="awards" style="display:none;">
+
+    <div class="section" id="awards">
       <div class="section-title">Awards & Achievements</div>
       <ul>
         <li><b>Intel Ph.D. Fellowship</b>, 2023–24</li>
-        <li><b>GATE 2017</b>: All India Rank 10/100,000</li>
-        <li><b>Best Paper Nominee, HPCA 2021</b></li>
-      </ul>
-    </div>
-    <div class="section" id="teaching" style="display:none;">
-      <div class="section-title">Teaching & Mentoring</div>
-      <ul>
-        <li>Teaching Assistant, High Performance Computer Architecture, IISc (2022): Designed and evaluated GPU programming assignments</li>
-        <li>Mentored M.Tech students on UVM/multi-tenancy in GPUs</li>
-        <li>Shadow PC: EuroSys 2025 | Sub-reviewer: HPCA 2025, TDSC 2022</li>
-      </ul>
-    </div>
-    <div class="section" id="talks" style="display:none;">
-      <div class="section-title">Invited Talks</div>
-      <ul>
-        <li>Improving GPU memory management (Intel, Bengaluru)</li>
-        <li>Reverse engineering NVIDIA GPU TLBs (IIT Bombay)</li>
-        <li>Improving UVM with static analysis (IIT Gandhinagar)</li>
-        <li>Designing virtual memory for MCM GPUs (SysTalks@India)</li>
-      </ul>
-    </div>
-    <div class="section" id="projects" style="display:none;">
-      <div class="section-title">Key Projects</div>
-      <ul>
-        <li><b>Impact of Multi-tenancy on UVM-based GPU workloads</b> — Characterized workload throughput under multi-tenancy</li>
-        <li><b>Replacement Policies for DRAM Caches</b> — New dynamic replacement policy, empirical evaluation</li>
-        <li><b>Utilities for Porting TCP Evaluation Suite to NS3</b> — Ported network tools, prototyped modules</li>
-        <li><b>PintOS</b> — Implemented scheduling, virtual memory, and file system</li>
-      </ul>
-    </div>
-    <div class="section" id="contact" style="display:none;">
-      <div class="section-title">Contact</div>
-      <ul>
-        <li><b>Email (IISc):</b> <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a></li>
-        <li><b>Email (Personal):</b> <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a></li>
-        <li><b>Phone:</b> <a href="tel:+919746406949">+91 9746406949</a></li>
-        <li><b>Website:</b> <a href="https://pratheekb.github.io">pratheekb.github.io</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+        <li><b>GATE 2017</b>: All India Rank 10/100,000</li
