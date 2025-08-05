@@ -177,7 +177,7 @@ body {
   max-width: 820px;
   box-shadow: 0 4px 28px #00000007;
   margin: 0 auto 2em auto;
-  padding: 2em 1.4em 1.2em 1.4em;
+  padding: 2.5em 1.8em 1.5em 1.8em; /* Increased padding */
   animation: fadein 0.34s;
   border: 1.5px solid #e0e0e0;
   scroll-margin-top: 1.5em;
@@ -285,8 +285,8 @@ a:hover {
   }
 
   .section {
-    padding: 1em 0.2em;
-    margin: 0 15px; /* Increased margins */
+    padding: 1.5em 0.5em; /* Increased padding */
+    margin: 0 15px; /* Existing increased margins */
   }
 
   .sidebar .profile-photo {
@@ -320,8 +320,8 @@ a:hover {
   }
 
   .section {
-    padding: 0.7em 0.01em;
-    margin: 0 10px; /* Added margins */
+    padding: 1em 0.3em; /* Increased padding */
+    margin: 0 10px; /* Existing added margins */
   }
 
   .nameblock h1 {
