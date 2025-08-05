@@ -8,17 +8,19 @@ body {
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #181818;
+  color: #1b5e20; /* Dark green text */
   min-height: 100vh;
+  background-color: #e8f5e9; /* Light green background */
 }
 
 .container {
   display: flex;
   min-height: 100vh;
+  border: 2px solid #4caf50; /* Green border */
 }
 
 .sidebar {
-  background: #f7f7f7;
+  background-color: #a5d6a7; /* Sidebar green background */
   color: #181818;
   width: 250px;
   min-width: 170px;
@@ -103,8 +105,8 @@ body {
 .sidebar .download-cv {
   margin-top: 20px;
   display: inline-block;
-  background: #2364aa;
-  color: #fff;
+  background-color: #66bb6a; /* Button green background */
+  color: white;
   font-weight: 600;
   padding: 0.5em 1.1em;
   border-radius: 7px;
@@ -195,7 +197,7 @@ body {
 
 .section-title {
   font-family: 'Merriweather', serif;
-  color: #2364aa;
+  color: #388e3c; /* Section title green */
   font-size: 1.15em;
   font-weight: 700;
   border-left: 4px solid #2364aa;
@@ -230,11 +232,12 @@ li {
 }
 
 .highlight {
-  color: #2364aa;
+  background-color: #81c784; /* Highlight green background */
+  color: #1b5e20; /* Highlight text */
 }
 
 a {
-  color: #2364aa;
+  color: #2e7d32; /* Green links */
   text-decoration: none;
 }
 
