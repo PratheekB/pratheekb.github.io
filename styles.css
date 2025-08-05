@@ -236,6 +236,14 @@ li {
   color: white; /* Highlight text */
 }
 
+.subtle-highlight {
+  background-color: #f0f4f8; /* Very light gray-blue background */
+  color: #2c3e50; /* Dark blue-gray text */
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
 a {
   color: #3498db; /* Bright blue links */
   text-decoration: none;
