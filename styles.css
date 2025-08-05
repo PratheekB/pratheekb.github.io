@@ -89,7 +89,7 @@ body {
   border-radius: 2px;
   letter-spacing: 0.54px;
   font-size: 1.08em;
-  transition: background 0.1s ease-in-out, color 0.1s ease-in-out, border 0.1s ease-in-out; /* Reduced transition duration */
+  transition: background 0.05s ease-in-out, color 0.05s ease-in-out, border 0.05s ease-in-out; /* Reduced transition duration */
   width: 100%;
   scroll-behavior: smooth;
 }
