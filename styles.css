@@ -8,19 +8,19 @@ body {
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #006064; /* Dark cyan text */
+  color: #2c3e50; /* Dark blue-gray text */
   min-height: 100vh;
-  background-color: #e0f7fa; /* Light cyan background */
+  background-color: #f4f6f8; /* Light gray background */
 }
 
 .container {
   display: flex;
   min-height: 100vh;
-  border: 2px solid #00acc1; /* Cyan border */
+  border: 2px solid #bdc3c7; /* Light gray border */
 }
 
 .sidebar {
-  background-color: #b2ebf2; /* Sidebar cyan background */
+  background-color: #ecf0f1; /* Sidebar light gray background */
   color: #181818;
   width: 250px;
   min-width: 170px;
@@ -105,7 +105,7 @@ body {
 .sidebar .download-cv {
   margin-top: 20px;
   display: inline-block;
-  background-color: #4dd0e1; /* Button cyan background */
+  background-color: #2980b9; /* Button blue background */
   color: white;
   font-weight: 600;
   padding: 0.5em 1.1em;
@@ -197,7 +197,7 @@ body {
 
 .section-title {
   font-family: 'Merriweather', serif;
-  color: #00796b; /* Section title cyan */
+  color: #34495e; /* Section title dark blue-gray */
   font-size: 1.15em;
   font-weight: 700;
   border-left: 4px solid #2364aa;
@@ -232,12 +232,12 @@ li {
 }
 
 .highlight {
-  background-color: #80deea; /* Highlight cyan background */
-  color: #006064; /* Highlight text */
+  background-color: #3498db; /* Highlight blue background */
+  color: white; /* Highlight text */
 }
 
 a {
-  color: #00838f; /* Cyan links */
+  color: #3498db; /* Bright blue links */
   text-decoration: none;
 }
 
