@@ -24,34 +24,34 @@
     .sidebar {
       background: var(--sidebar-bg);
       color: var(--text-main);
-      width: 260px; min-width:200px; max-width:310px;
+      width: 250px; min-width:170px; max-width:300px;
       display: flex; flex-direction: column; align-items: center;
-      padding: 2em 0 2em 0; z-index:3;
-      border-right: 1.5px solid var(--border);
-      box-shadow: 2px 0 14px #eaeaea13;
+      padding: 2em 0 2.2em 0; z-index:3;
+      border-right: 1.5px solid var(--border); box-shadow: 2px 0 14px #eaeaea13;
       flex-shrink: 0;
     }
     .sidebar .profile-photo {
-      width: 108px; height: 108px; border-radius: 50%; object-fit: cover;
-      margin-bottom: 1.3em; background: #f2f2f2; border: 4px solid var(--blue);
+      width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+      margin-bottom: 1.1em; background: #f2f2f2; border: 4px solid var(--blue);
       box-shadow:0 3px 18px #cacaca10;
     }
     .sidebar .contact-block {
-      font-size: 1em; margin-bottom:1.01em; text-align:center;
+      font-size: 1em; margin-bottom:1em; text-align:center;
     }
     .sidebar .contact-block a {
       color: var(--blue); text-decoration: none; display: block;
-      margin: 0.16em 0; word-break: break-all; transition: color .13s;
+      margin: 0.13em 0; word-break: break-all; transition: color .13s;
     }
     .sidebar .contact-block a:hover { color: var(--blue-light);}
     .sidebar nav {
-      margin: 2.2em 0 1.5em 0; width: 90%; text-align:left;
+      margin: 2.1em 0 1.3em 0; width: 94%; text-align:left; display:flex; flex-direction:column; align-items:flex-start;
     }
     .sidebar nav a {
       display: block; color: var(--text-fade); font-weight: 500;
-      margin-bottom: .60em; padding: 0.21em 0 0.21em .45em; text-decoration: none;
+      margin-bottom: .42em; padding: 0.32em 0 0.32em .6em; text-decoration: none;
       border-left: 4px solid transparent; border-radius:2px;
-      letter-spacing:.6px; font-size: 1.09em; transition: background .13s, color .17s, border .14s;
+      letter-spacing:.56px; font-size: 1.06em; transition: background .13s, color .17s, border .14s;
+      width:100%;
     }
     .sidebar nav a.active, .sidebar nav a:hover {
       color: var(--blue);
@@ -61,12 +61,12 @@
     .sidebar .download-cv {
       margin-top: 24px; display:inline-block; background:var(--blue); color:#fff; font-weight:600;
       padding:.5em 1.1em; border-radius:7px; text-decoration:none; letter-spacing:.05em; font-size: 1em;
-      text-align:center; transition:background .15s; border: none;
+      text-align:center; border: none; transition:background .15s;
     }
     .sidebar .download-cv:hover { background: var(--blue-light); color:var(--header-dark);}
     .main {flex: 1; padding: 2.3em 2vw 1.6em 2vw; background: #fff;}
     .nameblock {
-      text-align:center; padding-top: .5em; margin-bottom: 2em;
+      text-align:center; padding-top: .5em; margin-bottom: 1.8em;
     }
     .nameblock h1 {
       font-family: 'Merriweather', serif; color: var(--header-dark);
@@ -78,7 +78,7 @@
       font-weight: 600;
       letter-spacing: .5px;
       font-size: 1.1em;
-      margin-top:0.12em;
+      margin-top:0.10em;
     }
     .section {
       background: var(--card-bg); border-radius: 12px;
@@ -105,34 +105,20 @@
     a { color: var(--blue); text-decoration: none;}
     a:hover {text-decoration: underline;}
     .paper-link {font-weight:bold;}
-    /* --- Mobile and small device styles --- */
-    @media (max-width:900px){
+    @media (max-width:700px){
       .container { flex-direction:column;}
       .sidebar {
-        width:100%;max-width:100%;flex-direction:row; padding:1.2em 0 0.4em 0;
-        border-right: none; border-bottom: 1.5px solid var(--border);
-        box-shadow: none;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        position:relative;
+        width:100%;max-width:100%; border-right:none; border-bottom: 1.5px solid var(--border); box-shadow: none;
+        flex-direction:column; align-items:center; padding:1.3em 0 0.6em 0;
       }
-      .sidebar nav {display:flex;width:auto;flex-grow:1;flex-wrap:wrap;justify-content:flex-start;margin:1.2em 0 .6em 0;}
-      .sidebar nav a {margin-right:1.2em;margin-bottom:0;padding:.4em .6em;}
-      .sidebar .profile-photo {width:72px;height:72px; margin-bottom: 0.9em;}
-      .sidebar .download-cv {margin-left:.8em;margin-top:0;}
-      .main{padding-top:1.2em;}
-      .section{padding:1em .3em;}
-      .nameblock{padding-top:0;}
-    }
-    @media (max-width:600px){
-      .main{padding:0.5em 0.2em;}
-      .section{padding:.7em 0.05em;}
-      .nameblock h1{font-size:1.15em;}
-      .section-title{font-size:1em;}
-      .sidebar nav a {font-size:1em;}
-    }
-    @media (max-width:420px){
-      .sidebar nav a {font-size:0.98em;padding:.4em .3em;}
-      .nameblock h1{font-size:.97em;}
+      .sidebar nav {flex-direction:column; width:94%; align-items:flex-start;}
+      .sidebar nav a {padding:.37em 0 .37em .6em; font-size:1.09em;}
+      .main {padding: 1em 0.6em;}
+      .section {padding:1em 0.2em;}
+      .sidebar .profile-photo {width:70px;height:70px;}
+      .nameblock {margin-bottom: 1em;}
+      .nameblock h1 {font-size: 1.08em;}
     }
   </style>
   <script>
@@ -158,8 +144,7 @@
       <a href="https://pratheekb.github.io">pratheekb.github.io</a>
     </div>
     <nav>
-      <a href="#" class="active" onclick="showSection(event, 'bio')">Bio</a>
-      <a href="#" onclick="showSection(event, 'research')">Research</a>
+      <a href="#" class="active" onclick="showSection(event, 'bio')">Home</a>
       <a href="#" onclick="showSection(event, 'publications')">Publications</a>
       <a href="#" onclick="showSection(event, 'awards')">Awards</a>
       <a href="#" onclick="showSection(event, 'teaching')">Teaching</a>
