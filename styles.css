@@ -82,7 +82,7 @@ body {
   display: block;
   color: #444;
   font-weight: 500;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.4em; /* Ensure consistent margin */
   padding: 0.32em 0 0.32em 0.7em;
   text-decoration: none;
   border-left: 4px solid transparent;
@@ -100,6 +100,7 @@ body {
   color: #2364aa;
   border-left: 4px solid #2364aa;
   background: #f9fbfd; /* Slightly lighter background for hover */
+  margin-bottom: 0.4em; /* Prevent margin changes on hover */
 }
 
 .sidebar .download-cv {
