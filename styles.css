@@ -8,19 +8,19 @@ body {
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #1b5e20; /* Dark green text */
+  color: #006064; /* Dark cyan text */
   min-height: 100vh;
-  background-color: #e8f5e9; /* Light green background */
+  background-color: #e0f7fa; /* Light cyan background */
 }
 
 .container {
   display: flex;
   min-height: 100vh;
-  border: 2px solid #4caf50; /* Green border */
+  border: 2px solid #00acc1; /* Cyan border */
 }
 
 .sidebar {
-  background-color: #a5d6a7; /* Sidebar green background */
+  background-color: #b2ebf2; /* Sidebar cyan background */
   color: #181818;
   width: 250px;
   min-width: 170px;
@@ -105,7 +105,7 @@ body {
 .sidebar .download-cv {
   margin-top: 20px;
   display: inline-block;
-  background-color: #66bb6a; /* Button green background */
+  background-color: #4dd0e1; /* Button cyan background */
   color: white;
   font-weight: 600;
   padding: 0.5em 1.1em;
@@ -197,7 +197,7 @@ body {
 
 .section-title {
   font-family: 'Merriweather', serif;
-  color: #388e3c; /* Section title green */
+  color: #00796b; /* Section title cyan */
   font-size: 1.15em;
   font-weight: 700;
   border-left: 4px solid #2364aa;
@@ -232,12 +232,12 @@ li {
 }
 
 .highlight {
-  background-color: #81c784; /* Highlight green background */
-  color: #1b5e20; /* Highlight text */
+  background-color: #80deea; /* Highlight cyan background */
+  color: #006064; /* Highlight text */
 }
 
 a {
-  color: #2e7d32; /* Green links */
+  color: #00838f; /* Cyan links */
   text-decoration: none;
 }
 
