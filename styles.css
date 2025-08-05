@@ -305,6 +305,12 @@ a:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .main {
     padding: 0.5em 0.1em;
