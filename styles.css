@@ -281,12 +281,12 @@ a:hover {
   .main {
     margin-left: 0px;
     padding: 1.5em 0.7em 0.7em 0.7em;
-    margin: 0 10px; /* Added slight margins */
+    margin: 0 15px; /* Increased margins */
   }
 
   .section {
     padding: 1em 0.2em;
-    margin: 0 10px; /* Added slight margins */
+    margin: 0 15px; /* Increased margins */
   }
 
   .sidebar .profile-photo {
@@ -316,10 +316,12 @@ a:hover {
 @media (max-width: 480px) {
   .main {
     padding: 0.5em 0.1em;
+    margin: 0 10px; /* Added margins */
   }
 
   .section {
     padding: 0.7em 0.01em;
+    margin: 0 10px; /* Added margins */
   }
 
   .nameblock h1 {
