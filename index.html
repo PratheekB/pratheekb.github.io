@@ -12,20 +12,18 @@
       padding: 0;
       margin: 0;
       background: #fff;
+      height: 100%;
     }
 
     body {
       font-family: 'Roboto', Arial, sans-serif;
       color: #181818;
+      min-height: 100vh;
     }
 
     .container {
       display: flex;
       min-height: 100vh;
-      justify-content: center;
-      /* horizontally center the content */
-      align-items: center;
-      /* vertically center if you want, can omit if only horizontal centering is desired */
     }
 
     .sidebar {
@@ -41,8 +39,9 @@
       border-right: 1.5px solid #e0e0e0;
       box-shadow: 2px 0 14px #eaeaea13;
       flex-shrink: 0;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
       height: 100vh;
       z-index: 100;
     }
@@ -136,16 +135,18 @@
       padding: 2em 2vw 1.3em 2vw;
       background: #fff;
       margin-left: 250px;
+      /* Leaves space for fixed sidebar */
       transition: margin-left .2s;
       min-width: 0;
     }
 
     .notice {
       background: #e53935;
+      /* Red info bar */
       color: #fff;
       font-weight: 700;
       border-radius: 0 0 12px 12px;
-      box-shadow: 0 2px 14px #2364aa18;
+      box-shadow: 0 2px 14px #e5393518;
       padding: .9em 1.2em;
       text-align: center;
       margin-bottom: 2em;
@@ -263,6 +264,7 @@
       }
 
       .sidebar {
+        position: static;
         width: 100%;
         max-width: 100%;
         border-right: none;
@@ -272,8 +274,8 @@
         align-items: center;
         padding: 1.3em 0 0.6em 0;
         height: auto;
-        position: static;
         top: auto;
+        left: auto;
       }
 
       .main {
@@ -369,12 +371,9 @@
         <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a>
         <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a>
         <a href="https://pratheekb.github.io">pratheekb.github.io</a>
-        <!-- 
-      <a href="https://dblp.org/pid/xx/yyy.html" target="_blank" rel="noopener">DBLP Profile</a>
-    -->
       </div>
       <nav>
-        <a href="#about">About</a>
+        <a href="#bio">Home</a>
         <a href="#publications">Publications</a>
         <a href="#awards">Awards</a>
         <a href="#teaching">Teaching</a>
@@ -385,14 +384,14 @@
       <a class="download-cv" href="Pratheek_CV.pdf" download>Download CV</a>
     </aside>
     <div class="main">
-      <div class="notice">Testing in Production</div>
+      <div class="notice">Work in Progress</div>
       <div class="nameblock">
         <h1>Pratheek B</h1>
         <div class="role">Ph.D. Candidate, Computer Science, IISc</div>
       </div>
 
-      <div class="section" id="about">
-        <div class="section-title">About</div>
+      <div class="section" id="bio">
+        <div class="section-title">Bio</div>
         <p>I am a <b>Ph.D. candidate at the Indian Institute of Science, Bengaluru</b> specializing in <span
             class="tag">GPU memory management</span>, <span class="tag">micro-architecture</span>, and <span
             class="tag">system design</span>. My work focuses on address translation, data placement for large-memory
@@ -424,6 +423,8 @@
             Ajay Nayak, Pratheek B., Vinod Ganapathy, Arkaprava Basu
           </li>
         </ul>
+        <p style="color:#888;font-size:.98em;margin-top:2em;">All links open local PDFs from the <b>papers/</b> folder.
+        </p>
       </div>
 
       <div class="section" id="awards">
