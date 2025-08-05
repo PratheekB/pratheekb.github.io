@@ -22,6 +22,10 @@
     .container {
       display: flex;
       min-height: 100vh;
+      justify-content: center;
+      /* horizontally center the content */
+      align-items: center;
+      /* vertically center if you want, can omit if only horizontal centering is desired */
     }
 
     .sidebar {
@@ -134,10 +138,14 @@
       margin-left: 250px;
       transition: margin-left .2s;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* center inner sections horizontally */
     }
 
     .notice {
-      background: #2364aa;
+      background: #e53935;
       color: #fff;
       font-weight: 700;
       border-radius: 0 0 12px 12px;
@@ -387,82 +395,92 @@
         <div class="role">Ph.D. Candidate, Computer Science, IISc</div>
       </div>
 
-    <div class="section" id="bio">
-      <div class="section-title">Bio</div>
-      <p>I am a <b>Ph.D. candidate at the Indian Institute of Science, Bengaluru</b> specializing in <span class="tag">GPU memory management</span>, <span class="tag">micro-architecture</span>, and <span class="tag">system design</span>. My work focuses on address translation, data placement for large-memory workloads, and the intersection of architecture and systems. Previously, I worked on reverse engineering Nvidia GPUs and remain active in CPU micro-architecture research.</p>
-    </div>
+      <div class="section" id="bio">
+        <div class="section-title">Bio</div>
+        <p>I am a <b>Ph.D. candidate at the Indian Institute of Science, Bengaluru</b> specializing in <span
+            class="tag">GPU memory management</span>, <span class="tag">micro-architecture</span>, and <span
+            class="tag">system design</span>. My work focuses on address translation, data placement for large-memory
+          workloads, and the intersection of architecture and systems. Previously, I worked on reverse engineering
+          Nvidia GPUs and remain active in CPU micro-architecture research.</p>
+      </div>
 
-    <div class="section" id="publications">
-      <div class="section-title">Selected Publications</div>
-      <ul>
-        <li>
-          <a href="papers/MICRO24_SUV.pdf" class="paper-link" target="_blank">SUV: Static analysis guided Unified Virtual Memory</a> <span class="meta">(MICRO’24)</span><br>
-          Pratheek B., Guilherme Cox, Jan Vesely, Arkaprava Basu
-        </li>
-        <li>
-          <a href="papers/MICRO22_MGvm.pdf" class="paper-link" target="_blank">Designing Virtual Memory System of MCM GPUs</a> <span class="meta">(MICRO’22)</span><br>
-          Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="highlight">[Equal Contribution]</span>
-        </li>
-        <li>
-          <a href="papers/HPCA21_DWS.pdf" class="paper-link" target="_blank">Improving GPU Multi-tenancy with Page Walk Stealing</a> <span class="meta">(HPCA’21)</span><br>
-          Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="highlight">[Best Paper Nominee]</span>
-        </li>
-        <li>
-          <a href="papers/ASIACCS21_mismanaged.pdf" class="paper-link" target="_blank">(Mis)managed: A Novel TLB-based Covert Channel on GPUs</a> <span class="meta">(AsiaCCS’21)</span><br>
-          Ajay Nayak, Pratheek B., Vinod Ganapathy, Arkaprava Basu
-        </li>
-      </ul>
-      <p style="color:#888;font-size:.98em;margin-top:2em;">All links open local PDFs from the <b>papers/</b> folder.</p>
-    </div>
+      <div class="section" id="publications">
+        <div class="section-title">Selected Publications</div>
+        <ul>
+          <li>
+            <a href="papers/MICRO24_SUV.pdf" class="paper-link" target="_blank">SUV: Static analysis guided Unified
+              Virtual Memory</a> <span class="meta">(MICRO’24)</span><br>
+            Pratheek B., Guilherme Cox, Jan Vesely, Arkaprava Basu
+          </li>
+          <li>
+            <a href="papers/MICRO22_MGvm.pdf" class="paper-link" target="_blank">Designing Virtual Memory System of MCM
+              GPUs</a> <span class="meta">(MICRO’22)</span><br>
+            Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="highlight">[Equal Contribution]</span>
+          </li>
+          <li>
+            <a href="papers/HPCA21_DWS.pdf" class="paper-link" target="_blank">Improving GPU Multi-tenancy with Page
+              Walk Stealing</a> <span class="meta">(HPCA’21)</span><br>
+            Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="highlight">[Best Paper Nominee]</span>
+          </li>
+          <li>
+            <a href="papers/ASIACCS21_mismanaged.pdf" class="paper-link" target="_blank">(Mis)managed: A Novel TLB-based
+              Covert Channel on GPUs</a> <span class="meta">(AsiaCCS’21)</span><br>
+            Ajay Nayak, Pratheek B., Vinod Ganapathy, Arkaprava Basu
+          </li>
+        </ul>
+      </div>
 
-    <div class="section" id="awards">
-      <div class="section-title">Awards & Achievements</div>
-      <ul>
-        <li><b>Intel Ph.D. Fellowship</b>, 2023–24</li>
-        <li><b>GATE 2017</b>: All India Rank 10/100,000</li>
-        <li><b>Best Paper Nominee, HPCA 2021</b></li>
-      </ul>
-    </div>
+      <div class="section" id="awards">
+        <div class="section-title">Awards & Achievements</div>
+        <ul>
+          <li><b>Intel Ph.D. Fellowship</b>, 2023–24</li>
+          <li><b>GATE 2017</b>: All India Rank 10/100,000</li>
+          <li><b>Best Paper Nominee, HPCA 2021</b></li>
+        </ul>
+      </div>
 
-    <div class="section" id="teaching">
-      <div class="section-title">Teaching & Mentoring</div>
-      <ul>
-        <li>Teaching Assistant, High Performance Computer Architecture, IISc (2022): Designed and evaluated GPU programming assignments</li>
-        <li>Mentored M.Tech students on UVM/multi-tenancy in GPUs</li>
-        <li>Shadow PC: EuroSys 2025 | Sub-reviewer: HPCA 2025, TDSC 2022</li>
-      </ul>
-    </div>
+      <div class="section" id="teaching">
+        <div class="section-title">Teaching & Mentoring</div>
+        <ul>
+          <li>Teaching Assistant, High Performance Computer Architecture, IISc (2022): Designed and evaluated GPU
+            programming assignments</li>
+          <li>Mentored M.Tech students on UVM/multi-tenancy in GPUs</li>
+          <li>Shadow PC: EuroSys 2025 | Sub-reviewer: HPCA 2025, TDSC 2022</li>
+        </ul>
+      </div>
 
-    <div class="section" id="talks">
-      <div class="section-title">Invited Talks</div>
-      <ul>
-        <li>Improving GPU memory management (Intel, Bengaluru)</li>
-        <li>Reverse engineering NVIDIA GPU TLBs (IIT Bombay)</li>
-        <li>Improving UVM with static analysis (IIT Gandhinagar)</li>
-        <li>Designing virtual memory for MCM GPUs (SysTalks@India)</li>
-      </ul>
-    </div>
+      <div class="section" id="talks">
+        <div class="section-title">Invited Talks</div>
+        <ul>
+          <li>Improving GPU memory management (Intel, Bengaluru)</li>
+          <li>Reverse engineering NVIDIA GPU TLBs (IIT Bombay)</li>
+          <li>Improving UVM with static analysis (IIT Gandhinagar)</li>
+          <li>Designing virtual memory for MCM GPUs (SysTalks@India)</li>
+        </ul>
+      </div>
 
-    <div class="section" id="projects">
-      <div class="section-title">Key Projects</div>
-      <ul>
-        <li><b>Impact of Multi-tenancy on UVM-based GPU workloads</b> — Characterized workload throughput under multi-tenancy</li>
-        <li><b>Replacement Policies for DRAM Caches</b> — New dynamic replacement policy, empirical evaluation</li>
-        <li><b>Utilities for Porting TCP Evaluation Suite to NS3</b> — Ported network tools, prototyped modules</li>
-        <li><b>PintOS</b> — Implemented scheduling, virtual memory, and file system</li>
-      </ul>
-    </div>
+      <div class="section" id="projects">
+        <div class="section-title">Key Projects</div>
+        <ul>
+          <li><b>Impact of Multi-tenancy on UVM-based GPU workloads</b> — Characterized workload throughput under
+            multi-tenancy</li>
+          <li><b>Replacement Policies for DRAM Caches</b> — New dynamic replacement policy, empirical evaluation</li>
+          <li><b>Utilities for Porting TCP Evaluation Suite to NS3</b> — Ported network tools, prototyped modules</li>
+          <li><b>PintOS</b> — Implemented scheduling, virtual memory, and file system</li>
+        </ul>
+      </div>
 
-    <div class="section" id="contact">
-      <div class="section-title">Contact</div>
-      <ul>
-        <li><b>Email (IISc):</b> <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a></li>
-        <li><b>Email (Personal):</b> <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a></li>
-        <li><b>Phone:</b> <a href="tel:+919746406949">+91 9746406949</a></li>
-        <li><b>Website:</b> <a href="https://pratheekb.github.io">pratheekb.github.io</a></li>
-      </ul>
+      <div class="section" id="contact">
+        <div class="section-title">Contact</div>
+        <ul>
+          <li><b>Email (IISc):</b> <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a></li>
+          <li><b>Email (Personal):</b> <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a></li>
+          <li><b>Phone:</b> <a href="tel:+919746406949">+91 9746406949</a></li>
+          <li><b>Website:</b> <a href="https://pratheekb.github.io">pratheekb.github.io</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </body>
+
 </html>
