@@ -85,7 +85,7 @@ body {
   margin-bottom: 0.4em;
   padding: 0.32em 0 0.32em 0.7em;
   text-decoration: none;
-  border-left: 4px solid transparent;
+  border-left: 4px solid transparent; /* Always present, prevents movement */
   border-radius: 2px;
   letter-spacing: 0.54px;
   font-size: 1.08em;
@@ -98,7 +98,7 @@ body {
 .sidebar nav a:focus,
 .sidebar nav a:hover {
   color: #2364aa;
-  border-left: 4px solid #2364aa;
+  border-left: 4px solid #2364aa; /* Changes color on hover */
   background: #f1f7fb;
 }
 
