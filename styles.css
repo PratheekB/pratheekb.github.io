@@ -616,8 +616,3 @@ body {
 .main:focus {
   outline: none;
 }
-
-.talk-video {
-  margin-left: 6px;
-  vertical-align: 1px;
-}
