@@ -116,11 +116,12 @@ a:focus-visible {
 }
 
 .profile-photo {
-  width: 128px;
-  height: 128px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  margin: 0 auto;
   box-shadow: var(--photo-ring);
 }
 
@@ -383,8 +384,8 @@ ul {
   }
 
   .profile-photo {
-    width: 136px;
-    height: 136px;
+    width: 160px;
+    height: 160px;
     flex-shrink: 0;
   }
 
