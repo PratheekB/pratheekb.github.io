@@ -279,9 +279,10 @@ ul {
 }
 
 .note {
+  display: block;
+  margin-top: 2px;
   color: var(--faint);
-  font-size: 0.85rem;
-  margin-left: 6px;
+  font-size: 0.82rem;
 }
 
 .award-badge {
