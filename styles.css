@@ -105,7 +105,9 @@ a:focus-visible {
   align-self: start;
   height: 100vh;
   overflow-y: auto;
-  padding: 64px 0 40px;
+  /* Side padding keeps the photo's ring from being clipped by the scroll box */
+  padding: 64px 8px 40px;
+  margin: 0 -8px;
   display: flex;
   flex-direction: column;
 }
@@ -605,4 +607,9 @@ body {
 
 .main:focus {
   outline: none;
+}
+
+.talk-video {
+  margin-left: 6px;
+  vertical-align: 1px;
 }
