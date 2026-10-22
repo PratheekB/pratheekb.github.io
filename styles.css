@@ -203,11 +203,11 @@ a:focus-visible {
 
 .section-title {
   font-family: var(--sans);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--faint);
+  color: var(--text);
   margin: 0 0 20px;
 }
 
@@ -257,7 +257,7 @@ ul {
 
 .paper-link {
   font-family: var(--serif);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.12rem;
   line-height: 1.4;
   color: var(--text);
