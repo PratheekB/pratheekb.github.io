@@ -116,16 +116,18 @@ a:focus-visible {
 }
 
 .profile-photo {
-  width: 128px;
-  height: 128px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  margin: 0 auto;
   box-shadow: var(--photo-ring);
 }
 
 .nameblock {
   margin-top: 24px;
+  text-align: center;
 }
 
 .nameblock h1 {
@@ -147,6 +149,9 @@ a:focus-visible {
   margin-top: 20px;
   font-size: 0.9rem;
   line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact-block a {
@@ -383,8 +388,8 @@ ul {
   }
 
   .profile-photo {
-    width: 136px;
-    height: 136px;
+    width: 160px;
+    height: 160px;
     flex-shrink: 0;
   }
 
@@ -407,41 +412,15 @@ ul {
 
   .contact-block {
     margin-top: 18px;
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2px 18px;
   }
 
-  /* Nav becomes a sticky, horizontally scrolling chip bar */
+  /* No section nav on mobile; visitors just scroll */
   .sidebar nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    flex-direction: row;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin: 20px -20px 0;
-    padding: 10px 44px 10px 20px;
-    background: var(--bg);
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .sidebar nav::-webkit-scrollbar {
     display: none;
-  }
-
-  .sidebar nav a {
-    margin-left: 0;
-    white-space: nowrap;
-    font-size: 0.88rem;
-    padding: 5px 12px;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
   }
 
   .main {
@@ -450,7 +429,12 @@ ul {
 
   .section {
     padding: 32px 0;
-    scroll-margin-top: 64px;
+  }
+
+  /* Divider between the header and the first section, now that the nav bar is gone */
+  .section:first-child {
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
   }
 
   .lede {
@@ -483,6 +467,7 @@ ul {
   margin-top: 18px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
