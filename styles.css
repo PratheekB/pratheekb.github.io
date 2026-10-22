@@ -166,29 +166,6 @@ a:focus-visible {
   background: var(--accent-soft);
 }
 
-.download-cv {
-  margin-top: 28px;
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 20px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--surface);
-  font-weight: 600;
-  font-size: 0.92rem;
-  letter-spacing: 0.02em;
-  transition: background-color 0.15s, transform 0.15s;
-}
-
-.download-cv:hover {
-  background: var(--accent-hover);
-  color: var(--surface);
-  text-decoration: none;
-  transform: translateY(-1px);
-}
-
 /* ---------- Main ---------- */
 
 .main {
@@ -353,11 +330,13 @@ ul {
     padding: 0 20px;
   }
 
+  /* Let the sidebar's children join the page flow so the nav can stick */
   .sidebar {
-    position: static;
-    height: auto;
-    overflow: visible;
-    padding: 40px 0 0;
+    display: contents;
+  }
+
+  .profile {
+    padding-top: 32px;
   }
 
   .profile {
@@ -392,15 +371,20 @@ ul {
     gap: 2px 18px;
   }
 
-  /* Nav becomes a horizontally scrolling chip bar */
+  /* Nav becomes a sticky, horizontally scrolling chip bar */
   .sidebar nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     flex-direction: row;
     gap: 6px;
     overflow-x: auto;
     scrollbar-width: none;
     margin: 20px -20px 0;
-    padding: 10px 20px;
+    padding: 10px 44px 10px 20px;
     background: var(--bg);
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
@@ -416,12 +400,6 @@ ul {
     padding: 5px 12px;
     border: 1px solid var(--rule);
     border-radius: 999px;
-  }
-
-  .download-cv {
-    margin-top: 16px;
-    padding: 7px 16px;
-    font-size: 0.85rem;
   }
 
   .main {
@@ -462,16 +440,18 @@ ul {
 .social {
   margin-top: 18px;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .social a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--muted);
   border: 1px solid var(--rule);
   background: var(--surface);
