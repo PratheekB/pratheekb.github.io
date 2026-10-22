@@ -617,7 +617,10 @@ body {
   outline: none;
 }
 
-.talk-video {
-  margin-left: 6px;
-  vertical-align: 1px;
+/* Small "video" link after a talk */
+.video-link {
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
 }

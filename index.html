@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=15" />
   <script>
     // Apply a saved theme choice before the page paints to avoid a flash.
     (function () {
@@ -38,7 +38,7 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="profile">
-        <img src="profile.jpg?v=2" alt="Pratheek B" class="profile-photo" width="640" height="640" />
+        <img src="profile.jpg?v=2" alt="Pratheek B" class="profile-photo" width="160" height="160" />
         <div class="nameblock">
           <h1>Pratheek B</h1>
           <div class="role">Senior Software Engineer, NVIDIA</div>
@@ -117,7 +117,8 @@
             <span class="venue">MICRO’22</span>
             <div class="pub-body">
               <a href="papers/MICRO22_MGvm.pdf" class="paper-link" target="_blank" rel="noopener">Designing Virtual Memory System of MCM GPUs</a>
-              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu<span class="note">*Equal Contribution</span></div>
+              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu</div>
+              <div class="note">*Equal Contribution</div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/MICRO22_MGvm.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
                 <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
@@ -139,7 +140,8 @@
             <div class="pub-body">
               <a href="papers/HPCA21_DWS.pdf" class="paper-link" target="_blank" rel="noopener">Improving GPU Multi-tenancy with Page Walk Stealing</a>
               <span class="award-badge">Best paper nominee</span>
-              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu<span class="note">*Equal Contribution</span></div>
+              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu</div>
+              <div class="note">*Equal Contribution</div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/HPCA21_DWS.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
                 <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
@@ -200,13 +202,13 @@
       <section class="section" id="talks">
         <h2 class="section-title">Talks</h2>
         <ul class="list">
-          <li>Observability-aided GPU Memory Oversubscription <span class="muted">(ISCA 2026, Raleigh, NC)</span> <a class="pub-btn talk-video" href="https://www.youtube.com/watch?v=Sa9R1c64-0s" target="_blank" rel="noopener" aria-label="Video: Observability-aided GPU Memory Oversubscription"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Video</a></li>
+          <li>Observability-aided GPU Memory Oversubscription <span class="muted">(ISCA 2026, Raleigh, NC)</span> <a class="video-link" href="https://www.youtube.com/watch?v=Sa9R1c64-0s" target="_blank" rel="noopener" aria-label="Video: Observability-aided GPU Memory Oversubscription, ISCA 2026, Raleigh, NC">video</a></li>
           <li>Improving GPU memory management <span class="muted">(IIT Gandhinagar, 2025; Intel, Bengaluru, 2024)</span></li>
           <li>SUV: Static analysis guided Unified Virtual Memory <span class="muted">(MICRO 2024, Austin, TX)</span></li>
           <li>Reverse engineering NVIDIA GPU TLBs <span class="muted">(IIT Bombay workshop, 2024)</span></li>
-          <li>Designing Virtual Memory System of MCM GPUs <span class="muted">(SysTalks@India, 2024)</span> <a class="pub-btn talk-video" href="https://www.youtube.com/watch?v=nTNbysQvGkw" target="_blank" rel="noopener" aria-label="Video: Designing Virtual Memory System of MCM GPUs (SysTalks@India)"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Video</a></li>
-          <li>Designing Virtual Memory System of MCM GPUs <span class="muted">(MICRO 2022, Virtual)</span> <a class="pub-btn talk-video" href="https://www.youtube.com/watch?v=5CB7liZ531Y" target="_blank" rel="noopener" aria-label="Video: Designing Virtual Memory System of MCM GPUs (MICRO 2022)"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Video</a></li>
-          <li>Improving GPU Multi-tenancy with Page Walk Stealing <span class="muted">(HPCA 2021, Virtual)</span> <a class="pub-btn talk-video" href="https://www.youtube.com/watch?v=6oHIecxkQYk" target="_blank" rel="noopener" aria-label="Video: Improving GPU Multi-tenancy with Page Walk Stealing"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Video</a></li>
+          <li>Designing Virtual Memory System of MCM GPUs <span class="muted">(SysTalks@India, 2024)</span> <a class="video-link" href="https://www.youtube.com/watch?v=nTNbysQvGkw" target="_blank" rel="noopener" aria-label="Video: Designing Virtual Memory System of MCM GPUs, SysTalks@India, 2024">video</a></li>
+          <li>Designing Virtual Memory System of MCM GPUs <span class="muted">(MICRO 2022, Virtual)</span> <a class="video-link" href="https://www.youtube.com/watch?v=5CB7liZ531Y" target="_blank" rel="noopener" aria-label="Video: Designing Virtual Memory System of MCM GPUs, MICRO 2022, Virtual">video</a></li>
+          <li>Improving GPU Multi-tenancy with Page Walk Stealing <span class="muted">(HPCA 2021, Virtual)</span> <a class="video-link" href="https://www.youtube.com/watch?v=6oHIecxkQYk" target="_blank" rel="noopener" aria-label="Video: Improving GPU Multi-tenancy with Page Walk Stealing, HPCA 2021, Virtual">video</a></li>
         </ul>
       </section>
 
