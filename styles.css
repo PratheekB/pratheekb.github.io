@@ -15,8 +15,9 @@
   --sidebar-w: 300px;
 }
 
+/* Dark theme: follows the system unless the visitor picked a theme with the toggle */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #14161a;
     --surface: #1b1e23;
     --text: #e6e8eb;
@@ -29,6 +30,20 @@
     --gold: #e6b860;
     --gold-soft: #2e2617;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #14161a;
+  --surface: #1b1e23;
+  --text: #e6e8eb;
+  --muted: #a3aab4;
+  --faint: #7c838d;
+  --rule: #2b2f36;
+  --accent: #7db4e0;
+  --accent-hover: #a8cdeb;
+  --accent-soft: #1d2b38;
+  --gold: #e6b860;
+  --gold-soft: #2e2617;
 }
 
 *,
@@ -522,4 +537,47 @@ ul {
   line-height: 1.5;
   overflow-x: auto;
   white-space: pre;
+}
+
+/* ---------- Theme toggle ---------- */
+
+body {
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle .icon-sun,
+.dark .theme-toggle .icon-moon {
+  display: none;
+}
+
+.dark .theme-toggle .icon-sun {
+  display: block;
 }
