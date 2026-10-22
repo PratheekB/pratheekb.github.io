@@ -5,20 +5,30 @@
   <meta charset="UTF-8" />
   <title>Pratheek B – Sr. Software Engineer (NVIDIA)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Merriweather:700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Pratheek B, Senior Software Engineer at NVIDIA working on GPU memory management. Ph.D., Indian Institute of Science." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <div class="container">
+  <div class="layout">
     <aside class="sidebar">
-      <img src="IMG_0724.jpg" alt="Pratheek B" class="profile-photo" />
+      <div class="profile">
+        <img src="IMG_0724.jpg" alt="Pratheek B" class="profile-photo" />
+        <div class="nameblock">
+          <h1>Pratheek B</h1>
+          <div class="role">Sr. Software Engineer (NVIDIA)</div>
+        </div>
+      </div>
       <div class="contact-block">
         <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a>
         <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a>
         <a href="https://pratheekb.github.io">pratheekb.github.io</a>
       </div>
-      <nav>
+      <nav aria-label="Sections">
         <a href="#bio">About</a>
         <a href="#publications">Publications</a>
         <a href="#awards">Awards</a>
@@ -27,111 +37,137 @@
         <a href="#projects">Other Projects</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="download-cv" href="Pratheek_CV.pdf" download>CV</a>
+      <a class="download-cv" href="Pratheek_CV.pdf" download>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+        CV
+      </a>
     </aside>
-    <div class="main">
-      <div class="nameblock">
-        <h1>Pratheek B</h1>
-        <div class="role">Sr. Software Engineer (NVIDIA)</div>
-      </div>
 
-      <div class="section" id="bio">
-        <div class="section-title">About</div>
-        <p>Pratheek is a Senior Software Engineer at NVIDIA, working on improving GPU memory management.
+    <main class="main">
+      <section class="section" id="bio">
+        <h2 class="section-title">About</h2>
+        <p class="lede">Pratheek is a Senior Software Engineer at NVIDIA, working on improving GPU memory management.
 He obtained his Ph.D. from the Indian Institute of Science, Bengaluru in 2026.
 His research revolves around improving GPU memory management, focusing on address translation and data placement for large-memory workloads.
 His work spans the domains of GPU micro-architecture, compiler techniques, and operating systems.
 Previously, he had worked on reverse-engineering Nvidia GPUs.
 He also maintains an active interest in CPU micro-architecture research.
         </p>
-      </div>
+      </section>
 
-      <div class="section" id="publications">
-        <div class="section-title">Publications</div>
-        <ul>
-           <li>
-            <a href="papers/ISCA26_ObservUVM" class="paper-link" target="_blank"> Observability-aided GPU Memory Oversubscription </a> <span class="meta">(ISCA’26)</span><br />
-            Pratheek B., Khushit Shah, Arkaprava Basu
+      <section class="section" id="publications">
+        <h2 class="section-title">Publications</h2>
+        <ul class="pubs">
+          <li class="pub">
+            <span class="venue">ISCA’26</span>
+            <div class="pub-body">
+              <a href="papers/ISCA26_ObservUVM.pdf" class="paper-link" target="_blank" rel="noopener">Observability-aided GPU Memory Oversubscription</a>
+              <div class="authors"><strong>Pratheek B.</strong>, Khushit Shah, Arkaprava Basu</div>
+            </div>
           </li>
-          <li>
-            <a href="papers/MICRO24_SUV.pdf" class="paper-link" target="_blank">SUV: Static analysis guided Unified
-              Virtual
-              Memory</a> <span class="meta">(MICRO’24)</span><br />
-            Pratheek B., Guilherme Cox, Jan Vesely, Arkaprava Basu
+          <li class="pub">
+            <span class="venue">MICRO’24</span>
+            <div class="pub-body">
+              <a href="papers/MICRO24_SUV.pdf" class="paper-link" target="_blank" rel="noopener">SUV: Static analysis guided Unified Virtual Memory</a>
+              <div class="authors"><strong>Pratheek B.</strong>, Guilherme Cox, Jan Vesely, Arkaprava Basu</div>
+            </div>
           </li>
-          <li>
-            <a href="papers/MICRO22_MGvm.pdf" class="paper-link" target="_blank">Designing Virtual Memory System of MCM
-              GPUs</a>
-            <span class="meta">(MICRO’22)</span><br />
-            Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="subtle-highlight">[*Equal Contribution]</span>
+          <li class="pub">
+            <span class="venue">MICRO’22</span>
+            <div class="pub-body">
+              <a href="papers/MICRO22_MGvm.pdf" class="paper-link" target="_blank" rel="noopener">Designing Virtual Memory System of MCM GPUs</a>
+              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu <span class="note">*Equal Contribution</span></div>
+            </div>
           </li>
-          <li>
-            <a href="papers/HPCA21_DWS.pdf" class="paper-link" target="_blank">Improving GPU Multi-tenancy with Page
-              Walk Stealing</a>
-            <span class="meta">(HPCA’21)</span>
-            <e> [Best paper nominee] </e>
-            <br />
-            Pratheek B.*, Neha Jawalkar*, Arkaprava Basu <span class="subtle-highlight">[*Equal Contribution]</span>
+          <li class="pub">
+            <span class="venue">HPCA’21</span>
+            <div class="pub-body">
+              <a href="papers/HPCA21_DWS.pdf" class="paper-link" target="_blank" rel="noopener">Improving GPU Multi-tenancy with Page Walk Stealing</a>
+              <span class="award-badge">Best paper nominee</span>
+              <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu <span class="note">*Equal Contribution</span></div>
+            </div>
           </li>
-          <li>
-            <a href="papers/ASIACCS21_mismanaged.pdf" class="paper-link" target="_blank">(Mis)managed: A Novel TLB-based
-              Covert Channel on GPUs</a> <span class="meta">(AsiaCCS’21)</span><br />
-            Ajay Nayak, Pratheek B., Vinod Ganapathy, Arkaprava Basu
+          <li class="pub">
+            <span class="venue">AsiaCCS’21</span>
+            <div class="pub-body">
+              <a href="papers/ASIACCS21_mismanaged.pdf" class="paper-link" target="_blank" rel="noopener">(Mis)managed: A Novel TLB-based Covert Channel on GPUs</a>
+              <div class="authors">Ajay Nayak, <strong>Pratheek B.</strong>, Vinod Ganapathy, Arkaprava Basu</div>
+            </div>
           </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section" id="awards">
-        <div class="section-title">Awards & Achievements</div>
-        <ul>
+      <section class="section" id="awards">
+        <h2 class="section-title">Awards &amp; Achievements</h2>
+        <ul class="list">
           <li><b>Intel Ph.D. Fellowship</b>, 2023–24</li>
           <li><b>GATE 2017</b>: All India Rank 10/100,000</li>
           <li><b>Best Paper Nominee</b>: HPCA 2021</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section" id="service">
-        <div class="section-title">Service</div>
-        <ul>
+      <section class="section" id="service">
+        <h2 class="section-title">Service</h2>
+        <ul class="list">
           <li>PC member: MICRO 2026</li>
           <li>Shadow Program Committee: EuroSys 2025</li>
           <li>Sub-reviewer: HPCA 2025</li>
           <li>Sub-reviewer: TDSC 2022</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section" id="talks">
-        <div class="section-title">Talks</div>
-        <ul>
-          <li>Improving GPU memory management (Intel, Bengaluru)</li>
-          <li>Reverse engineering NVIDIA GPU TLBs (IIT Bombay)</li>
-          <li>Improving UVM with static analysis (IIT Gandhinagar)</li>
-          <li>Designing virtual memory for MCM GPUs (SysTalks@India)</li>
+      <section class="section" id="talks">
+        <h2 class="section-title">Talks</h2>
+        <ul class="list">
+          <li>Improving GPU memory management <span class="muted">(Intel, Bengaluru)</span></li>
+          <li>Reverse engineering NVIDIA GPU TLBs <span class="muted">(IIT Bombay)</span></li>
+          <li>Improving UVM with static analysis <span class="muted">(IIT Gandhinagar)</span></li>
+          <li>Designing virtual memory for MCM GPUs <span class="muted">(SysTalks@India)</span></li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section" id="projects">
-        <div class="section-title">Other Projects</div>
-        <ul>
-          <li> Improving UVM policies under GPU memory oversubscription</li>
-          <li> Study on impact of multi-tenancy on UVM-based GPU workloads </li>
-          <li> Analysing replacement policies for DRAM Caches </li>
-          <li> Utilities for porting TCP Evaluation Suite to NS3 </li>
+      <section class="section" id="projects">
+        <h2 class="section-title">Other Projects</h2>
+        <ul class="list">
+          <li>Improving UVM policies under GPU memory oversubscription</li>
+          <li>Study on impact of multi-tenancy on UVM-based GPU workloads</li>
+          <li>Analysing replacement policies for DRAM Caches</li>
+          <li>Utilities for porting TCP Evaluation Suite to NS3</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section" id="contact">
-        <div class="section-title">Contact</div>
-        <ul>
-          <li><b>Email (IISc):</b> <a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a></li>
-          <li><b>Email (Personal):</b> <a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a></li>
-          <li><b>Website:</b> <a href="https://pratheekb.github.io">pratheekb.github.io</a></li>
-          <li><b>CV:</b> <a href="Pratheek_CV.pdf">download</a> </li>
+      <section class="section" id="contact">
+        <h2 class="section-title">Contact</h2>
+        <dl class="contact-list">
+          <dt>Email (IISc)</dt><dd><a href="mailto:pratheekb@iisc.ac.in">pratheekb@iisc.ac.in</a></dd>
+          <dt>Email (Personal)</dt><dd><a href="mailto:pratheekbksd@gmail.com">pratheekbksd@gmail.com</a></dd>
+          <dt>Website</dt><dd><a href="https://pratheekb.github.io">pratheekb.github.io</a></dd>
+          <dt>CV</dt><dd><a href="Pratheek_CV.pdf">download</a></dd>
+        </dl>
+      </section>
 
-        </ul>
-      </div>
-    </div>
+      <footer class="footer">© Pratheek B</footer>
+    </main>
   </div>
+
+  <script>
+    // Highlight the nav link for the section currently in view.
+    (function () {
+      var links = document.querySelectorAll('.sidebar nav a');
+      if (!('IntersectionObserver' in window) || !links.length) return;
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a) { a.classList.remove('active'); });
+          var link = byId[e.target.id];
+          if (link) link.classList.add('active');
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      document.querySelectorAll('.section').forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 </body>
 
 </html>
