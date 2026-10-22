@@ -3,7 +3,7 @@
   --surface: #ffffff;
   --text: #1f2328;
   --muted: #5f6670;
-  --faint: #8b929b;
+  --faint: #6b717b;
   --rule: #e6e3dc;
   --accent: #1f5f8b;
   --accent-hover: #164a6d;
@@ -580,4 +580,29 @@ body {
 
 .dark .theme-toggle .icon-sun {
   display: block;
+}
+
+/* ---------- Accessibility helpers ---------- */
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 30;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 600;
+  transition: top 0.15s;
+}
+
+.skip-link:focus {
+  top: 16px;
+  color: var(--surface);
+  text-decoration: none;
+}
+
+.main:focus {
+  outline: none;
 }

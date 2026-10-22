@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
   <script>
     // Apply a saved theme choice before the page paints to avoid a flash.
     (function () {
@@ -30,6 +30,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
     <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
@@ -61,7 +62,7 @@
       </nav>
     </aside>
 
-    <main class="main">
+    <main class="main" id="main" tabindex="-1">
       <section class="section" id="bio">
         <h2 class="section-title">About</h2>
         <p class="lede">Pratheek is a Senior Software Engineer at NVIDIA, working on GPU memory management.
@@ -82,7 +83,7 @@
               <div class="authors"><strong>Pratheek B.</strong>, Khushit Shah, Arkaprava Basu</div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/ISCA26_ObservUVM.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
-                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span>BibTeX</span></button>
+                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
               </div>
               <pre class="bibtex" hidden>@inproceedings{b2026observability,
   author    = {Pratheek, B and Shah, Khushit and Basu, Arkaprava},
@@ -99,7 +100,7 @@
               <div class="authors"><strong>Pratheek B.</strong>, Guilherme Cox, Jan Vesely, Arkaprava Basu</div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/MICRO24_SUV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
-                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span>BibTeX</span></button>
+                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
               </div>
               <pre class="bibtex" hidden>@inproceedings{b2024suv,
   author    = {Pratheek, B and Cox, Guilherme and Vesel{\'y}, J{\'a}n and Basu, Arkaprava},
@@ -119,7 +120,7 @@
               <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu <span class="note">*Equal Contribution</span></div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/MICRO22_MGvm.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
-                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span>BibTeX</span></button>
+                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
               </div>
               <pre class="bibtex" hidden>@inproceedings{b2022designing,
   author    = {Pratheek, B and Jawalkar, Neha and Basu, Arkaprava},
@@ -141,7 +142,7 @@
               <div class="authors"><strong>Pratheek B.*</strong>, Neha Jawalkar*, Arkaprava Basu <span class="note">*Equal Contribution</span></div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/HPCA21_DWS.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
-                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span>BibTeX</span></button>
+                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
               </div>
               <pre class="bibtex" hidden>@inproceedings{b2021improving,
   author    = {Pratheek, B and Jawalkar, Neha and Basu, Arkaprava},
@@ -161,7 +162,7 @@
               <div class="authors">Ajay Nayak, <strong>Pratheek B.</strong>, Vinod Ganapathy, Arkaprava Basu</div>
               <div class="pub-actions">
                 <a class="pub-btn" href="papers/ASIACCS21_mismanaged.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>PDF</a>
-                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span>BibTeX</span></button>
+                <button type="button" class="pub-btn bib-btn"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v10H9zM5 15V5h10"/></svg><span aria-live="polite">BibTeX</span></button>
               </div>
               <pre class="bibtex" hidden>@inproceedings{nayak2021mismanaged,
   author    = {Nayak, Ajay and Pratheek, B and Ganapathy, Vinod and Basu, Arkaprava},
