@@ -616,3 +616,11 @@ body {
 .main:focus {
   outline: none;
 }
+
+/* Small "video" link after a talk */
+.video-link {
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
