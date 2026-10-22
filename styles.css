@@ -121,6 +121,19 @@ a:focus-visible {
   box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--rule);
 }
 
+/* Separate photo for each theme */
+.profile-photo.photo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .profile-photo.photo-light { display: none; }
+  :root:not([data-theme="light"]) .profile-photo.photo-dark { display: block; }
+}
+
+:root[data-theme="dark"] .profile-photo.photo-light { display: none; }
+:root[data-theme="dark"] .profile-photo.photo-dark { display: block; }
+
 .nameblock {
   margin-top: 24px;
 }
