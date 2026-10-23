@@ -262,9 +262,10 @@
       });
     });
 
-    // Easter egg: click the photo, name, photo, name within a few seconds
+    // Easter egg: click inside the photo, outside, inside, outside within a few seconds
     (function () {
-      var seq = ['photo', 'name', 'photo', 'name'];
+      var seq = ['in', 'out', 'in', 'out'];
+      var photo = document.querySelector('.profile-photo');
       var pos = 0;
       var timer;
       var step = function (what) {
@@ -273,8 +274,9 @@
         timer = setTimeout(function () { pos = 0; }, 3000);
         if (pos === seq.length) window.location.href = 'secret.html';
       };
-      document.querySelector('.profile-photo').addEventListener('click', function () { step('photo'); });
-      document.querySelector('.nameblock h1').addEventListener('click', function () { step('name'); });
+      document.addEventListener('click', function (e) {
+        step(photo.contains(e.target) ? 'in' : 'out');
+      });
     })();
 
     // Theme toggle: start from the system setting, remember an explicit choice.
