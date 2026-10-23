@@ -49,6 +49,40 @@
   --photo-ring: 0 0 0 1px rgba(236, 229, 216, 0.14);
 }
 
+/* Time-of-day tints over the light theme (set by theme.js when on automatic).
+   Dawn is a cool, rosy morning paper; golden hour is warm late-afternoon light.
+   Day is the plain light theme and night is the dark theme above. */
+:root[data-phase="dawn"] {
+  --bg: #f9f1f0;
+  --surface: #fffaf9;
+  --rule: #ecdcda;
+  --accent-soft: #ebedf6;
+  --gold-soft: #fbe8e0;
+}
+
+:root[data-phase="golden"] {
+  --bg: #fbf4e7;
+  --surface: #fffaf1;
+  --muted: #625f58;
+  --rule: #ecdec4;
+  --accent-soft: #ebeee9;
+  --gold-soft: #f9e7c4;
+}
+
+/* Evening is twilight: a lighter, dusky indigo dark, before the warm night */
+:root[data-phase="evening"] {
+  --bg: #262a40;
+  --surface: #2e3249;
+  --text: #ebe8f2;
+  --muted: #b7b5cc;
+  --faint: #9c9ab4;
+  --rule: #3e4260;
+  --accent: #9cc2ec;
+  --accent-soft: #343d63;
+  --gold-soft: #3d3340;
+  --photo-ring: 0 0 0 1px rgba(235, 232, 242, 0.16);
+}
+
 *,
 *::before,
 *::after {
@@ -149,12 +183,21 @@ a:focus-visible {
   opacity: 1;
 }
 
+/* A touch of warm light on the day photo at golden hour */
+.photo-day {
+  transition: filter 0.35s;
+}
+
+:root[data-phase="golden"] .photo-day {
+  filter: sepia(0.14) saturate(1.08);
+}
+
 /* Fallback fade for the theme toggle where View Transitions aren't supported */
 .theme-fade,
 .theme-fade *,
 .theme-fade *::before,
 .theme-fade *::after {
-  transition: color 0.35s, background-color 0.35s, border-color 0.35s, box-shadow 0.35s, opacity 0.35s !important;
+  transition: color 0.35s, background-color 0.35s, border-color 0.35s, box-shadow 0.35s, opacity 0.35s, filter 0.35s !important;
 }
 
 ::view-transition-old(root),

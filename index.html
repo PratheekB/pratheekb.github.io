@@ -17,16 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=22" />
-  <script>
-    // Apply a saved theme choice before the page paints to avoid a flash.
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
+  <link rel="stylesheet" href="styles.css?v=25" />
+  <script src="theme.js?v=2"></script>
 </head>
 
 <body>
@@ -274,38 +266,54 @@
       });
     })();
 
-    // Theme toggle: start from the system setting, remember an explicit choice.
+    // Theme toggle: pick light or dark until the next time-of-day phase,
+    // and keep checking the clock so the page shifts while it's open.
     (function () {
       var root = document.documentElement;
       var btn = document.querySelector('.theme-toggle');
-      var media = window.matchMedia('(prefers-color-scheme: dark)');
-      var isDark = function () {
-        var t = root.getAttribute('data-theme');
-        return t ? t === 'dark' : media.matches;
-      };
+      var theme = window.siteTheme;
+      var isDark = function () { return root.getAttribute('data-theme') === 'dark'; };
       var sync = function () {
         root.classList.toggle('dark', isDark());
         btn.setAttribute('aria-pressed', String(isDark()));
       };
-      var apply = function (next) {
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-        sync();
-      };
-      btn.addEventListener('click', function () {
-        var next = isDark() ? 'light' : 'dark';
-        // Crossfade the whole page, photo included, instead of snapping
+      // Crossfade the whole page, photo included, instead of snapping
+      var fade = function (change) {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          apply(next);
+          change();
         } else if (document.startViewTransition) {
-          document.startViewTransition(function () { apply(next); });
+          document.startViewTransition(change);
         } else {
           root.classList.add('theme-fade');
-          apply(next);
+          change();
           setTimeout(function () { root.classList.remove('theme-fade'); }, 400);
         }
+      };
+      btn.addEventListener('click', function () {
+        var now = new Date();
+        var next = isDark() ? 'light' : 'dark';
+        var p = theme.phase(now);
+        // Flipping back to what the clock would show returns to automatic
+        var auto = next === (theme.dark(p) ? 'dark' : 'light');
+        try {
+          if (auto) {
+            localStorage.removeItem('theme');
+            localStorage.removeItem('themeUntil');
+          } else {
+            localStorage.setItem('theme', next);
+            localStorage.setItem('themeUntil', String(theme.nextChange(now)));
+          }
+        } catch (e) {}
+        fade(function () {
+          theme.set(auto ? { theme: next, phase: p } : { theme: next, phase: '' });
+          sync();
+        });
       });
-      if (media.addEventListener) media.addEventListener('change', sync);
+      setInterval(function () {
+        var st = theme.current(new Date());
+        if (st.theme === root.getAttribute('data-theme') && st.phase === (root.getAttribute('data-phase') || '')) return;
+        fade(function () { theme.set(st); sync(); });
+      }, 60000);
       sync();
     })();
   </script>
