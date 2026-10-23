@@ -262,6 +262,21 @@
       });
     });
 
+    // Easter egg: click the photo, name, photo, name within a few seconds
+    (function () {
+      var seq = ['photo', 'name', 'photo', 'name'];
+      var pos = 0;
+      var timer;
+      var step = function (what) {
+        pos = what === seq[pos] ? pos + 1 : (what === seq[0] ? 1 : 0);
+        clearTimeout(timer);
+        timer = setTimeout(function () { pos = 0; }, 3000);
+        if (pos === seq.length) window.location.href = 'secret.html';
+      };
+      document.querySelector('.profile-photo').addEventListener('click', function () { step('photo'); });
+      document.querySelector('.nameblock h1').addEventListener('click', function () { step('name'); });
+    })();
+
     // Theme toggle: start from the system setting, remember an explicit choice.
     (function () {
       var root = document.documentElement;
