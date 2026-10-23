@@ -69,15 +69,18 @@
   --gold-soft: #f9e7c4;
 }
 
-/* Evening tints the dark theme toward twilight: a dusky violet-blue */
+/* Evening is twilight: a lighter, dusky indigo dark, before the warm night */
 :root[data-phase="evening"] {
-  --bg: #1d1c23;
-  --surface: #25242d;
-  --muted: #b0aab8;
-  --faint: #958fa0;
-  --rule: #36343f;
-  --accent-soft: #29304a;
-  --gold-soft: #332a26;
+  --bg: #262a40;
+  --surface: #2e3249;
+  --text: #ebe8f2;
+  --muted: #b7b5cc;
+  --faint: #9c9ab4;
+  --rule: #3e4260;
+  --accent: #9cc2ec;
+  --accent-soft: #343d63;
+  --gold-soft: #3d3340;
+  --photo-ring: 0 0 0 1px rgba(235, 232, 242, 0.16);
 }
 
 *,
