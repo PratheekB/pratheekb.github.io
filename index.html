@@ -262,22 +262,6 @@
       });
     });
 
-    // Easter egg: double-click (or double-tap) the profile photo
-    (function () {
-      var photo = document.querySelector('.profile-photo');
-      var go = function () { window.location.href = 'secret.html'; };
-      var lastTap = 0;
-      photo.addEventListener('dblclick', go);
-      photo.addEventListener('touchend', function (e) {
-        var now = Date.now();
-        if (now - lastTap < 350) {
-          e.preventDefault();
-          go();
-        }
-        lastTap = now;
-      });
-    })();
-
     // Theme toggle: start from the system setting, remember an explicit choice.
     (function () {
       var root = document.documentElement;
