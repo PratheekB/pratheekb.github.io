@@ -1,7 +1,16 @@
-// The blog's posts, newest first. To add a post, copy hello-world.html under
+// The blog's posts, newest first. To add a post, copy any post under
 // a new name, write it, and add a line at the top of this list.
 var POSTS = [
-  { file: 'hello-world.html', title: 'Hello, world', date: '2026-10-23' }
+  { file: 'lorem-ipsum-dolor-sit-amet.html', title: 'Lorem ipsum dolor sit amet', date: '2026-10-23' },
+  { file: 'consectetur-adipiscing-elit.html', title: 'Consectetur adipiscing elit', date: '2026-10-09' },
+  { file: 'sed-do-eiusmod-tempor.html', title: 'Sed do eiusmod tempor', date: '2026-09-25' },
+  { file: 'ut-labore-et-dolore-magna-aliqua.html', title: 'Ut labore et dolore magna aliqua', date: '2026-09-11' },
+  { file: 'quis-nostrud-exercitation.html', title: 'Quis nostrud exercitation', date: '2026-08-28' },
+  { file: 'duis-aute-irure-dolor-in-reprehenderit.html', title: 'Duis aute irure dolor in reprehenderit', date: '2026-08-14' },
+  { file: 'excepteur-sint-occaecat.html', title: 'Excepteur sint occaecat', date: '2026-07-31' },
+  { file: 'sunt-in-culpa-qui-officia.html', title: 'Sunt in culpa qui officia', date: '2026-07-17' },
+  { file: 'nemo-enim-ipsam-voluptatem.html', title: 'Nemo enim ipsam voluptatem', date: '2026-07-03' },
+  { file: 'neque-porro-quisquam-est.html', title: 'Neque porro quisquam est', date: '2026-06-19' }
 ];
 
 // Fills the sidebar's post list and, on the blog's front page, shows the newest post.
