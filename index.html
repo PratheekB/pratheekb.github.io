@@ -262,20 +262,15 @@
       });
     });
 
-    // Easter egg: click inside the photo, outside, inside, outside within a few seconds
+    // Easter egg: click or tap the photo five times in a row
     (function () {
-      var seq = ['in', 'out', 'in', 'out'];
-      var photo = document.querySelector('.profile-photo');
-      var pos = 0;
+      var count = 0;
       var timer;
-      var step = function (what) {
-        pos = what === seq[pos] ? pos + 1 : (what === seq[0] ? 1 : 0);
+      document.querySelector('.profile-photo').addEventListener('click', function () {
+        count++;
         clearTimeout(timer);
-        timer = setTimeout(function () { pos = 0; }, 3000);
-        if (pos === seq.length) window.location.href = 'secret.html';
-      };
-      document.addEventListener('click', function (e) {
-        step(photo.contains(e.target) ? 'in' : 'out');
+        timer = setTimeout(function () { count = 0; }, 1500);
+        if (count === 5) window.location.href = 'secret.html';
       });
     })();
 
