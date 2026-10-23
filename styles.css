@@ -125,6 +125,29 @@ a:focus-visible {
   box-shadow: var(--photo-ring);
 }
 
+/* Mountain photo in dark mode; same theme rules as the palette above */
+.photo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .photo-day {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .photo-dark {
+    display: block;
+  }
+}
+
+:root[data-theme="dark"] .photo-day {
+  display: none;
+}
+
+:root[data-theme="dark"] .photo-dark {
+  display: block;
+}
+
 .nameblock {
   margin-top: 24px;
   text-align: center;
