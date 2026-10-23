@@ -17,16 +17,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=25" />
-  <script src="theme.js?v=2"></script>
+  <link rel="stylesheet" href="styles.css?v=26" />
+  <script src="theme.js?v=3"></script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
-  </button>
   <div class="layout">
     <aside class="sidebar">
       <div class="profile">
@@ -264,57 +260,6 @@
         timer = setTimeout(function () { count = 0; }, 1500);
         if (count === 2) window.location.href = 'secret.html';
       });
-    })();
-
-    // Theme toggle: pick light or dark until the next time-of-day phase,
-    // and keep checking the clock so the page shifts while it's open.
-    (function () {
-      var root = document.documentElement;
-      var btn = document.querySelector('.theme-toggle');
-      var theme = window.siteTheme;
-      var isDark = function () { return root.getAttribute('data-theme') === 'dark'; };
-      var sync = function () {
-        root.classList.toggle('dark', isDark());
-        btn.setAttribute('aria-pressed', String(isDark()));
-      };
-      // Crossfade the whole page, photo included, instead of snapping
-      var fade = function (change) {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          change();
-        } else if (document.startViewTransition) {
-          document.startViewTransition(change);
-        } else {
-          root.classList.add('theme-fade');
-          change();
-          setTimeout(function () { root.classList.remove('theme-fade'); }, 400);
-        }
-      };
-      btn.addEventListener('click', function () {
-        var now = new Date();
-        var next = isDark() ? 'light' : 'dark';
-        var p = theme.phase(now);
-        // Flipping back to what the clock would show returns to automatic
-        var auto = next === (theme.dark(p) ? 'dark' : 'light');
-        try {
-          if (auto) {
-            localStorage.removeItem('theme');
-            localStorage.removeItem('themeUntil');
-          } else {
-            localStorage.setItem('theme', next);
-            localStorage.setItem('themeUntil', String(theme.nextChange(now)));
-          }
-        } catch (e) {}
-        fade(function () {
-          theme.set(auto ? { theme: next, phase: p } : { theme: next, phase: '' });
-          sync();
-        });
-      });
-      setInterval(function () {
-        var st = theme.current(new Date());
-        if (st.theme === root.getAttribute('data-theme') && st.phase === (root.getAttribute('data-phase') || '')) return;
-        fade(function () { theme.set(st); sync(); });
-      }, 60000);
-      sync();
     })();
   </script>
 </body>
