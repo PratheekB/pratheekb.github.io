@@ -1,70 +1,132 @@
-/* Blog pages: one centred reading column, using the colours and fonts from ../styles.css */
+/* Blog pages: the post list in a sidebar beside the post, using the colours and fonts from ../styles.css */
 
 .blog {
-  max-width: 680px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 56px 24px 40px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 64px;
 }
 
-.blog-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
+/* ---------- Sidebar ---------- */
+
+.blog-side {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 56px 8px 40px;
+  margin: 0 -8px;
+}
+
+.blog-side .home {
+  display: inline-block;
   font-size: 0.9rem;
-  margin-bottom: 48px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 20px;
 }
 
-.blog-top .home {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-.blog-top .home:hover {
+.blog-side .home:hover {
   color: var(--accent);
 }
 
-.blog-head h1,
-.post-head h1 {
+.blog-name {
+  display: block;
   font-family: var(--serif);
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  text-wrap: balance;
-  margin: 0 0 12px;
+  color: var(--text);
 }
 
-.blog-head h1 {
-  font-size: 2.4rem;
+.blog-name:hover {
+  color: var(--text);
+  text-decoration: none;
 }
 
-.blog-head p {
+.tagline {
   font-family: var(--serif);
-  font-size: 1.15rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
   color: var(--muted);
-  margin: 0 0 40px;
+  margin: 8px 0 28px;
 }
 
-/* Post list */
+.post-nav summary {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  list-style: none;
+  cursor: pointer;
+}
 
-.posts {
+.post-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.post-nav summary span {
+  color: var(--faint);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.post-nav ol {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--rule);
 }
 
-.posts li {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--rule);
+.post-nav a {
+  display: block;
+  padding: 7px 12px;
+  margin: 0 0 2px -12px;
+  border-radius: 6px;
+  color: var(--text);
+  line-height: 1.35;
+  transition: color 0.15s, background-color 0.15s;
 }
 
-.posts li:last-child {
-  border-bottom: none;
+.post-nav a span {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.posts time,
+.post-nav a time {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--faint);
+  margin-top: 2px;
+}
+
+.post-nav a:hover {
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+.post-nav a.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ---------- A post ---------- */
+
+.blog-main {
+  padding: 64px 0 40px;
+  max-width: 680px;
+  min-width: 0;
+}
+
+.post-head {
+  margin-bottom: 32px;
+}
+
 .post-head time {
   display: block;
   font-size: 0.82rem;
@@ -74,26 +136,13 @@
   margin-bottom: 4px;
 }
 
-.posts a {
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.posts p {
-  margin: 6px 0 0;
-  color: var(--muted);
-}
-
-/* A single post */
-
-.post-head {
-  margin-bottom: 32px;
-}
-
 .post-head h1 {
+  font-family: var(--serif);
   font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
 }
 
 .post-body {
@@ -162,17 +211,56 @@
   margin-top: 56px;
 }
 
+/* ---------- Phones: header, then a fold-away post list, then the post ---------- */
+
 @media (max-width: 760px) {
   .blog {
-    padding: 32px 16px 32px;
+    display: block;
+    padding: 0 16px;
   }
 
-  .blog-top {
-    margin-bottom: 36px;
+  .blog-side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 32px 0 0;
+    margin: 0;
   }
 
-  .blog-head h1 {
-    font-size: 2rem;
+  .tagline {
+    margin-bottom: 20px;
+  }
+
+  .post-nav {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .post-nav summary {
+    padding: 14px 0;
+    margin: 0;
+  }
+
+  .post-nav summary::after {
+    content: '▾';
+    float: right;
+    color: var(--faint);
+  }
+
+  .post-nav[open] summary::after {
+    content: '▴';
+  }
+
+  .post-nav ol {
+    padding-bottom: 12px;
+  }
+
+  .blog-main {
+    padding-top: 32px;
+  }
+
+  .blog-name {
+    font-size: 1.8rem;
   }
 
   .post-head h1 {
