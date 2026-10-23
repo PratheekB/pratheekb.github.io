@@ -69,6 +69,17 @@
   --gold-soft: #f9e7c4;
 }
 
+/* Evening tints the dark theme toward twilight: a dusky violet-blue */
+:root[data-phase="evening"] {
+  --bg: #1d1c23;
+  --surface: #25242d;
+  --muted: #b0aab8;
+  --faint: #958fa0;
+  --rule: #36343f;
+  --accent-soft: #29304a;
+  --gold-soft: #332a26;
+}
+
 *,
 *::before,
 *::after {
