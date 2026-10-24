@@ -1,19 +1,19 @@
 #!/usr/bin/env node
-// Encrypts photos for the hidden vault page (vault/index.html). Run it on your
+// Encrypts photos and other files (PDFs and so on) for the hidden vault page (vault/index.html). Run it on your
 // own computer with Node 18 or newer; it needs no packages.
 //
-//   node tools/vault.mjs add ~/Pictures/a.jpg ~/Pictures/b.png   add photos
+//   node tools/vault.mjs add ~/Pictures/a.jpg ~/Docs/b.pdf       add photos or files
 //   node tools/vault.mjs list                                    show what's inside
-//   node tools/vault.mjs remove 3                                remove photo number 3
+//   node tools/vault.mjs remove 3                                remove item number 3
 //   node tools/vault.mjs passwd                                  change the password
 //
 // The first `add` creates the vault and asks for a new password. Only
-// ciphertext is written into vault/, so the repo never holds a plain photo or
+// ciphertext is written into vault/, so the repo never holds a plain file or
 // the password; commit vault/ afterwards. The password can also be given in
 // the VAULT_PASSWORD environment variable.
 //
 // Format: vault/vault.json holds the PBKDF2 salt and iteration count, plus the
-// encrypted list of photos. Each photo is vault/photos/<id>.bin, laid out as
+// encrypted list of items. Each item is vault/photos/<id>.bin, laid out as
 // a 12-byte IV followed by AES-256-GCM ciphertext, with the id as associated
 // data so files can't be swapped around.
 
@@ -28,7 +28,13 @@ const ITERATIONS = 600000;
 const VAULT = join(dirname(fileURLToPath(import.meta.url)), '..', 'vault');
 const INDEX = join(VAULT, 'vault.json');
 const PHOTOS = join(VAULT, 'photos');
-const TYPES = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.avif': 'image/avif' };
+// Images show in the vault's grid; any other file is listed below it
+const TYPES = {
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif', '.avif': 'image/avif',
+  '.pdf': 'application/pdf', '.txt': 'text/plain', '.md': 'text/plain', '.mp4': 'video/mp4', '.mp3': 'audio/mpeg',
+  '.zip': 'application/zip', '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+};
+const typeOf = (f) => TYPES[extname(f).toLowerCase()] || 'application/octet-stream';
 
 const enc = new TextEncoder();
 const b64 = (bytes) => Buffer.from(bytes).toString('base64');
@@ -91,31 +97,31 @@ async function save({ key, salt, iterations, photos }) {
 }
 
 async function add(files) {
-  if (!files.length) throw new Error('Name the photos to add.');
-  for (const f of files) if (!TYPES[extname(f).toLowerCase()]) throw new Error(`Not a supported image: ${f}`);
+  if (!files.length) throw new Error('Name the files to add.');
+  for (const f of files) if (!existsSync(f)) throw new Error(`No such file: ${f}`);
   const vault = await unlock({ create: true });
   await mkdir(PHOTOS, { recursive: true });
   for (const f of files) {
-    // Random ids, so file names in the repo say nothing about the photos
+    // Random ids, so file names in the repo say nothing about the contents
     const id = b64(crypto.getRandomValues(new Uint8Array(9))).replace(/\+/g, '-').replace(/\//g, '_');
     await writeFile(join(PHOTOS, id + '.bin'), await seal(vault.key, await readFile(f), id));
-    vault.photos.push({ id, type: TYPES[extname(f).toLowerCase()], caption: basename(f, extname(f)) });
+    vault.photos.push({ id, type: typeOf(f), caption: basename(f, extname(f)), name: basename(f) });
     console.log(`Added ${basename(f)}`);
   }
   await save(vault);
-  console.log(`The vault now holds ${vault.photos.length} photo(s). Commit the vault/ folder to publish.`);
+  console.log(`The vault now holds ${vault.photos.length} item(s). Commit the vault/ folder to publish.`);
 }
 
 async function list() {
   const { photos } = await unlock({ create: false });
-  photos.forEach((p, i) => console.log(`${i + 1}. ${p.caption}  (${p.id})`));
+  photos.forEach((p, i) => console.log(`${i + 1}. ${p.name || p.caption}  (${p.id})`));
   if (!photos.length) console.log('The vault is empty.');
 }
 
 async function remove(n) {
   const vault = await unlock({ create: false });
   const i = Number(n) - 1;
-  if (!vault.photos[i]) throw new Error('No photo with that number; see `list`.');
+  if (!vault.photos[i]) throw new Error('No item with that number; see `list`.');
   const [photo] = vault.photos.splice(i, 1);
   await rm(join(PHOTOS, photo.id + '.bin'), { force: true });
   await save(vault);
@@ -140,7 +146,7 @@ async function passwd() {
 const [cmd, ...args] = process.argv.slice(2);
 const commands = { add: () => add(args), list, remove: () => remove(args[0]), passwd };
 if (!commands[cmd]) {
-  console.log('Usage: node tools/vault.mjs add <photos...> | list | remove <number> | passwd');
+  console.log('Usage: node tools/vault.mjs add <files...> | list | remove <number> | passwd');
   process.exit(1);
 }
 commands[cmd]().catch((e) => { console.error(e.message); process.exit(1); });

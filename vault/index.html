@@ -159,22 +159,130 @@
       margin-top: 6px;
     }
 
+    .files {
+      width: 100%;
+      max-width: 560px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      text-align: left;
+    }
+
+    .files li + li {
+      border-top: 1px solid var(--rule);
+    }
+
+    .files a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 4px;
+      color: var(--text);
+    }
+
+    .files a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .files svg {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+    }
+
+    .files .size {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Full-screen photo viewer: arrows, swipe or arrow keys move between photos */
     .viewer {
       position: fixed;
       inset: 0;
       z-index: 10;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.85);
-      cursor: zoom-out;
+      gap: 12px;
+      padding: 56px 16px 20px;
+      background: rgba(10, 9, 8, 0.97);
+      color: #ece5d8;
+      touch-action: pan-y;
     }
 
     .viewer img {
+      min-height: 0;
       max-width: 100%;
       max-height: 100%;
+      object-fit: contain;
       border-radius: 6px;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .viewer .caption {
+      font-size: 0.9rem;
+      color: #b6ac9b;
+      text-align: center;
+    }
+
+    .viewer button {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ece5d8;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .viewer button:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .viewer button svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .viewer .close {
+      top: 8px;
+      right: 8px;
+    }
+
+    .viewer .prev,
+    .viewer .next {
+      top: 50%;
+      margin-top: -22px;
+    }
+
+    .viewer .prev {
+      left: 8px;
+    }
+
+    .viewer .next {
+      right: 8px;
+    }
+
+    .viewer .count {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      font-size: 0.85rem;
+      color: #b6ac9b;
+      text-align: center;
+      pointer-events: none;
     }
 
     [hidden] {
@@ -202,18 +310,28 @@
       <button type="button" id="lock">Lock</button>
     </div>
     <div class="grid" id="grid"></div>
+    <ul class="files" id="files"></ul>
   </main>
 
-  <div class="viewer" id="viewer" hidden><img alt="" /></div>
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <span class="count" id="count"></span>
+    <img id="view-img" alt="" />
+    <span class="caption" id="view-cap"></span>
+    <button type="button" class="close" id="close" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="prev" id="prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="next" id="next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+  </div>
 
   <script>
-    // Photos are stored encrypted (AES-256-GCM, key from the password via
+    // Photos and files are stored encrypted (AES-256-GCM, key from the password via
     // PBKDF2-SHA256). Everything is decrypted here in the browser; the
     // password never leaves the page. tools/vault.mjs makes the files.
     (function () {
       var enc = new TextEncoder();
       var $ = function (id) { return document.getElementById(id); };
       var urls = [];
+      var shown = [];  // { url, caption } for each photo, in grid order
+      var current = -1;
 
       function unb64(s) {
         var bin = atob(s), out = new Uint8Array(bin.length);
@@ -247,9 +365,11 @@
         for (var i = 0; i < photos.length; i++) {
           var p = photos[i];
           var bytes = new Uint8Array(await (await fetch('photos/' + p.id + '.bin')).arrayBuffer());
-          var url = URL.createObjectURL(new Blob([await open(key, bytes, p.id)], { type: p.type }));
+          var blob = new Blob([await open(key, bytes, p.id)], { type: p.type });
+          var url = URL.createObjectURL(blob);
           urls.push(url);
-          addPhoto(url, p.caption);
+          if (p.type.indexOf('image/') === 0) addPhoto(url, p.caption);
+          else addFile(url, p, blob.size);
         }
       }
 
@@ -261,10 +381,8 @@
         img.src = url;
         img.alt = caption || '';
         btn.appendChild(img);
-        btn.addEventListener('click', function () {
-          $('viewer').querySelector('img').src = url;
-          $('viewer').hidden = false;
-        });
+        var index = shown.push({ url: url, caption: caption }) - 1;
+        btn.addEventListener('click', function () { show(index); });
         fig.appendChild(btn);
         if (caption) {
           var cap = document.createElement('figcaption');
@@ -272,6 +390,25 @@
           fig.appendChild(cap);
         }
         $('grid').appendChild(fig);
+      }
+
+      // PDFs, text, audio and video open in a new tab; anything else downloads
+      function addFile(url, p, size) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        var name = document.createElement('span');
+        var kb = document.createElement('span');
+        a.href = url;
+        if (/^(application\/pdf|text\/|audio\/|video\/)/.test(p.type)) a.target = '_blank';
+        else a.download = p.name || p.caption;
+        a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5"/></svg>';
+        name.textContent = p.name || p.caption;
+        kb.className = 'size';
+        kb.textContent = size < 1048576 ? Math.max(1, Math.round(size / 1024)) + ' KB' : (size / 1048576).toFixed(1) + ' MB';
+        a.appendChild(name);
+        a.appendChild(kb);
+        li.appendChild(a);
+        $('files').appendChild(li);
       }
 
       $('unlock').addEventListener('submit', function (e) {
@@ -290,16 +427,63 @@
       });
 
       $('lock').addEventListener('click', function () {
+        closeViewer();
         urls.forEach(URL.revokeObjectURL);
         urls = [];
+        shown = [];
         $('grid').textContent = '';
+        $('files').textContent = '';
         $('opened').hidden = true;
         $('locked').hidden = false;
         $('password').focus();
       });
 
-      $('viewer').addEventListener('click', function () { $('viewer').hidden = true; });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('viewer').hidden = true; });
+      function show(i) {
+        current = (i + shown.length) % shown.length;
+        $('view-img').src = shown[current].url;
+        $('view-img').alt = shown[current].caption || '';
+        $('view-cap').textContent = shown[current].caption || '';
+        $('count').textContent = shown.length > 1 ? (current + 1) + ' / ' + shown.length : '';
+        $('prev').hidden = $('next').hidden = shown.length < 2;
+        if ($('viewer').hidden) {
+          $('viewer').hidden = false;
+          document.body.style.overflow = 'hidden';
+          $('close').focus();
+        }
+      }
+
+      function closeViewer() {
+        if ($('viewer').hidden) return;
+        $('viewer').hidden = true;
+        $('view-img').removeAttribute('src');
+        document.body.style.overflow = '';
+        current = -1;
+      }
+
+      $('prev').addEventListener('click', function () { show(current - 1); });
+      $('next').addEventListener('click', function () { show(current + 1); });
+      $('close').addEventListener('click', closeViewer);
+      // A click on the dark backdrop (not the photo or a button) closes it
+      $('viewer').addEventListener('click', function (e) { if (e.target === $('viewer')) closeViewer(); });
+      document.addEventListener('keydown', function (e) {
+        if ($('viewer').hidden) return;
+        if (e.key === 'Escape') closeViewer();
+        else if (e.key === 'ArrowLeft' && shown.length > 1) show(current - 1);
+        else if (e.key === 'ArrowRight' && shown.length > 1) show(current + 1);
+      });
+
+      // Swipe left or right on a phone
+      var startX = null, startY = 0;
+      $('viewer').addEventListener('touchstart', function (e) {
+        startX = e.touches.length === 1 ? e.touches[0].clientX : null;
+        startY = e.touches.length === 1 ? e.touches[0].clientY : 0;
+      }, { passive: true });
+      $('viewer').addEventListener('touchend', function (e) {
+        if (startX === null || shown.length < 2) return;
+        var dx = e.changedTouches[0].clientX - startX, dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1));
+        startX = null;
+      });
     })();
   </script>
 </body>
