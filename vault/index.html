@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Vault – Pratheek B</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=26" />
+  <script src="../theme.js?v=3"></script>
+  <style>
+    .vault {
+      min-height: 100vh;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .vault h1 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0 0 24px;
+    }
+
+    .vault .lock {
+      width: 44px;
+      height: 44px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .unlock {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .unlock input,
+    .unlock button,
+    .vault-bar button {
+      font: inherit;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--text);
+      padding: 8px 16px;
+    }
+
+    .unlock input {
+      width: min(260px, 80vw);
+    }
+
+    .unlock input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .unlock button,
+    .vault-bar button {
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .unlock button:hover,
+    .vault-bar button:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .unlock button:disabled {
+      opacity: 0.6;
+      cursor: progress;
+    }
+
+    .status {
+      min-height: 1.65em;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .status.error {
+      color: #b3261e;
+    }
+
+    .vault.open {
+      justify-content: flex-start;
+    }
+
+    .vault-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .vault-bar h1 {
+      margin: 0;
+    }
+
+    .grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .grid figure {
+      margin: 0;
+    }
+
+    .grid button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: zoom-in;
+    }
+
+    .grid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: var(--photo-ring);
+    }
+
+    .grid figcaption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      cursor: zoom-out;
+    }
+
+    .viewer img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 6px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="vault" id="locked">
+    <svg class="lock" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 11h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1zM8 11V7a4 4 0 0 1 8 0v4M12 15v2"/></svg>
+    <h1>Vault</h1>
+    <form class="unlock" id="unlock">
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required autofocus />
+      <button type="submit" id="unlock-btn">Unlock</button>
+    </form>
+    <p class="status" id="status" role="status"></p>
+    <a href="../doors.html">← Back</a>
+  </main>
+
+  <main class="vault open" id="opened" hidden>
+    <div class="vault-bar">
+      <a href="../doors.html">← Back</a>
+      <h1>Vault</h1>
+      <button type="button" id="lock">Lock</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <div class="viewer" id="viewer" hidden><img alt="" /></div>
+
+  <script>
+    // Photos are stored encrypted (AES-256-GCM, key from the password via
+    // PBKDF2-SHA256). Everything is decrypted here in the browser; the
+    // password never leaves the page. tools/vault.mjs makes the files.
+    (function () {
+      var enc = new TextEncoder();
+      var $ = function (id) { return document.getElementById(id); };
+      var urls = [];
+
+      function unb64(s) {
+        var bin = atob(s), out = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+        return out;
+      }
+
+      function open(key, bytes, aad) {
+        return crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes.slice(0, 12), additionalData: enc.encode(aad) }, key, bytes.slice(12));
+      }
+
+      function setStatus(text, error) {
+        $('status').textContent = text;
+        $('status').classList.toggle('error', !!error);
+      }
+
+      async function unlock(password) {
+        var index = await (await fetch('vault.json', { cache: 'no-cache' })).json();
+        var base = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+        var key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', hash: 'SHA-256', salt: unb64(index.salt), iterations: index.iterations },
+          base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+        var photos;
+        try {
+          photos = JSON.parse(new TextDecoder().decode(await open(key, unb64(index.data), 'index')));
+        } catch (e) {
+          throw new Error('Wrong password');
+        }
+        $('locked').hidden = true;
+        $('opened').hidden = false;
+        for (var i = 0; i < photos.length; i++) {
+          var p = photos[i];
+          var bytes = new Uint8Array(await (await fetch('photos/' + p.id + '.bin')).arrayBuffer());
+          var url = URL.createObjectURL(new Blob([await open(key, bytes, p.id)], { type: p.type }));
+          urls.push(url);
+          addPhoto(url, p.caption);
+        }
+      }
+
+      function addPhoto(url, caption) {
+        var fig = document.createElement('figure');
+        var btn = document.createElement('button');
+        var img = document.createElement('img');
+        btn.type = 'button';
+        img.src = url;
+        img.alt = caption || '';
+        btn.appendChild(img);
+        btn.addEventListener('click', function () {
+          $('viewer').querySelector('img').src = url;
+          $('viewer').hidden = false;
+        });
+        fig.appendChild(btn);
+        if (caption) {
+          var cap = document.createElement('figcaption');
+          cap.textContent = caption;
+          fig.appendChild(cap);
+        }
+        $('grid').appendChild(fig);
+      }
+
+      $('unlock').addEventListener('submit', function (e) {
+        e.preventDefault();
+        $('unlock-btn').disabled = true;
+        setStatus('Unlocking…');
+        unlock($('password').value).then(function () {
+          $('password').value = '';
+          setStatus('');
+        }, function (err) {
+          setStatus(err.message === 'Wrong password' ? 'Wrong password' : 'Could not open the vault', true);
+          $('password').select();
+        }).finally(function () {
+          $('unlock-btn').disabled = false;
+        });
+      });
+
+      $('lock').addEventListener('click', function () {
+        urls.forEach(URL.revokeObjectURL);
+        urls = [];
+        $('grid').textContent = '';
+        $('opened').hidden = true;
+        $('locked').hidden = false;
+        $('password').focus();
+      });
+
+      $('viewer').addEventListener('click', function () { $('viewer').hidden = true; });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('viewer').hidden = true; });
+    })();
+  </script>
+</body>
+
+</html>
