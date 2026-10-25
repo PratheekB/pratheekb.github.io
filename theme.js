@@ -1,32 +1,41 @@
-// Light or dark theme: follows the system setting until the visitor picks one
-// with the toggle, then remembers that choice on every page. Loaded (not
-// deferred) in <head> so a saved choice applies before the page paints.
+// Theme: light unless the visitor picks another mode with the toggle, which
+// cycles light → dark → auto (auto follows the device setting). The choice
+// is remembered on every page. Loaded (not deferred) in <head> so it applies
+// before the page paints.
 (function () {
   var root = document.documentElement;
+  var modes = ['light', 'dark', 'auto'];
+  var mode = 'light';
   try {
-    var t = localStorage.getItem('theme');
-    if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
+    var saved = localStorage.getItem('theme');
+    if (modes.indexOf(saved) !== -1) mode = saved;
   } catch (e) {}
+
+  // Light and dark pin the palette; auto leaves it to the prefers-color-scheme rules in styles.css
+  var set = function (m) {
+    mode = m;
+    if (m === 'auto') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', m);
+    root.setAttribute('data-mode', m);
+  };
+  set(mode);
 
   document.addEventListener('DOMContentLoaded', function () {
     var btn = document.querySelector('.theme-toggle');
     if (!btn) return;
-    var media = window.matchMedia('(prefers-color-scheme: dark)');
-    var isDark = function () {
-      var t = root.getAttribute('data-theme');
-      return t ? t === 'dark' : media.matches;
-    };
-    var sync = function () {
-      root.classList.toggle('dark', isDark());
-      btn.setAttribute('aria-pressed', String(isDark()));
+    var label = function () {
+      var next = modes[(modes.indexOf(mode) + 1) % modes.length];
+      var text = 'Theme: ' + mode + ' (switch to ' + next + ')';
+      btn.setAttribute('aria-label', text);
+      btn.setAttribute('title', text);
     };
     var apply = function (next) {
-      root.setAttribute('data-theme', next);
+      set(next);
       try { localStorage.setItem('theme', next); } catch (e) {}
-      sync();
+      label();
     };
     btn.addEventListener('click', function () {
-      var next = isDark() ? 'light' : 'dark';
+      var next = modes[(modes.indexOf(mode) + 1) % modes.length];
       // Crossfade the whole page, photo included, instead of snapping
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         apply(next);
@@ -38,7 +47,6 @@
         setTimeout(function () { root.classList.remove('theme-fade'); }, 400);
       }
     });
-    if (media.addEventListener) media.addEventListener('change', sync);
-    sync();
+    label();
   });
 })();
