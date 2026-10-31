@@ -5,9 +5,16 @@
   --muted: #5f6670;
   --faint: #6b717b;
   --rule: #e6e3dc;
-  --accent: #1f5f8b;
-  --accent-hover: #164a6d;
-  --accent-soft: #e8f0f6;
+  /* Accent colour: blue unless picked in the hidden colour menu (theme.js); each choice has a light and a dark set */
+  --al: #1f5f8b;
+  --al-hover: #164a6d;
+  --al-soft: #e8f0f6;
+  --ad: #9fcbef;
+  --ad-hover: #c3def5;
+  --ad-soft: #263241;
+  --accent: var(--al);
+  --accent-hover: var(--al-hover);
+  --accent-soft: var(--al-soft);
   --gold: #8a5a00;
   --gold-soft: #fbf1dc;
   --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
@@ -26,9 +33,9 @@
     --muted: #cdc5b8;
     --faint: #b3aa9b;
     --rule: #3a3833;
-    --accent: #9fcbef;
-    --accent-hover: #c3def5;
-    --accent-soft: #263241;
+    --accent: var(--ad);
+    --accent-hover: var(--ad-hover);
+    --accent-soft: var(--ad-soft);
     --gold: #f0c674;
     --gold-soft: #382e1c;
     --photo-ring: 0 0 0 1px rgba(236, 229, 216, 0.14);
@@ -43,14 +50,22 @@
   --muted: #cdc5b8;
   --faint: #b3aa9b;
   --rule: #3a3833;
-  --accent: #9fcbef;
-  --accent-hover: #c3def5;
-  --accent-soft: #263241;
+  --accent: var(--ad);
+  --accent-hover: var(--ad-hover);
+  --accent-soft: var(--ad-soft);
   --gold: #f0c674;
   --gold-soft: #382e1c;
   --photo-ring: 0 0 0 1px rgba(236, 229, 216, 0.14);
   color-scheme: dark;
 }
+
+/* Accent colours from the hidden colour menu (long-press the theme button) */
+:root[data-accent="teal"] { --al: #1b6b62; --al-hover: #14524b; --al-soft: #e3f1ee; --ad: #8fd3c7; --ad-hover: #b9e5dd; --ad-soft: #1f3532; }
+:root[data-accent="green"] { --al: #3b6b28; --al-hover: #2d521f; --al-soft: #eaf2e4; --ad: #a9d18e; --ad-hover: #c8e3b5; --ad-soft: #29331f; }
+:root[data-accent="purple"] { --al: #6b3f8f; --al-hover: #53306f; --al-soft: #f1eaf6; --ad: #cfb0ec; --ad-hover: #e1cdf4; --ad-soft: #33293f; }
+:root[data-accent="rose"] { --al: #a3335d; --al-hover: #822849; --al-soft: #f8e8ee; --ad: #f1a7c1; --ad-hover: #f6c8d8; --ad-soft: #3d2530; }
+:root[data-accent="rust"] { --al: #a03c22; --al-hover: #7f2f1a; --al-soft: #f8e9e4; --ad: #f0a898; --ad-hover: #f6c8bd; --ad-soft: #3d2622; }
+:root[data-accent="ink"] { --al: #3b4048; --al-hover: #24282e; --al-soft: #ecebe7; --ad: #d8d2c6; --ad-hover: #f2ede4; --ad-soft: #33312d; }
 
 /* Light text on a dark page looks thin with grayscale smoothing, so let the system draw it fuller */
 @media (prefers-color-scheme: dark) {
@@ -642,6 +657,73 @@ body {
 [data-mode="dark"] .theme-toggle .icon-moon,
 [data-mode="auto"] .theme-toggle .icon-auto {
   display: block;
+}
+
+/* Hidden accent colour menu: opens on a long press (or right-click) of the theme button */
+.theme-toggle {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.accent-menu {
+  position: absolute;
+  top: 66px;
+  right: 20px;
+  z-index: 21;
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  animation: accent-pop 0.15s ease-out;
+}
+
+.accent-menu[hidden] {
+  display: none;
+}
+
+@keyframes accent-pop {
+  from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-menu { animation: none; }
+}
+
+.accent-swatch {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  --sw: var(--sw-l);
+  background: var(--sw);
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Swatches show each colour as it looks in the current theme */
+:root[data-theme="dark"] .accent-swatch {
+  --sw: var(--sw-d);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .accent-swatch {
+    --sw: var(--sw-d);
+  }
+}
+
+.accent-swatch[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--sw);
+}
+
+.accent-swatch:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
 }
 
 /* ---------- Accessibility helpers ---------- */
