@@ -148,7 +148,7 @@ a:focus-visible {
   position: relative;
   width: 164px;
   height: 164px;
-  border-radius: 50%;
+  border-radius: 26%;
   overflow: hidden;
   margin: 0 auto;
   box-shadow: var(--photo-ring);
