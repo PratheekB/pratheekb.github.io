@@ -159,6 +159,23 @@
   margin: 0 0 1.2em;
 }
 
+.post-body ul,
+.post-body ol {
+  padding-left: 1.4em;
+}
+
+.post-body ul {
+  list-style: disc;
+}
+
+.post-body ol {
+  list-style: decimal;
+}
+
+.post-body li {
+  margin-bottom: 0.3em;
+}
+
 .post-body h2 {
   font-size: 1.45rem;
   line-height: 1.3;

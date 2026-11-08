@@ -1,5 +1,5 @@
-// The blog's posts, newest first. To add a post, copy any post under
-// a new name, write it, and add a line at the top of this list.
+// The blog's posts, newest first. Add, edit and delete posts on
+// blog/write.html, which rewrites this list when it publishes.
 var POSTS = [
   { file: 'lorem-ipsum-dolor-sit-amet.html', title: 'Lorem ipsum dolor sit amet', date: '2026-10-23' },
   { file: 'consectetur-adipiscing-elit.html', title: 'Consectetur adipiscing elit', date: '2026-10-09' },
