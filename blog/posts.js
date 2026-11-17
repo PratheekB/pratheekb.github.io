@@ -62,3 +62,14 @@ var POSTS = [
     });
   }
 })();
+
+// Put the exact page address in the broken-link report mail.
+(function () {
+  var a = document.getElementById('report-link');
+  if (!a) return;
+  var body = 'Hi Pratheek,\n\nA link on your website seems to be broken.\n\n' +
+    'Page: ' + location.href + '\nWhich link: \n\nThanks!';
+  a.href = 'mailto:pratheekbksd@gmail.com?subject=' +
+    encodeURIComponent('Broken link on pratheekb.github.io') +
+    '&body=' + encodeURIComponent(body);
+})();
