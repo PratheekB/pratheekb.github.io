@@ -417,6 +417,36 @@ ul {
   color: var(--accent);
 }
 
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footer .report-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  transition: color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.footer .report-link:hover,
+.footer .report-link:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 960px) {
