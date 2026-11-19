@@ -518,10 +518,6 @@ ul {
 
   .contact-block {
     margin-top: 18px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px 18px;
   }
 
   /* No section nav on mobile; visitors just scroll */
