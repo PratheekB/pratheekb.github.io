@@ -226,6 +226,16 @@ a:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.contact-block a.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-block a.contact-icon svg {
+  flex: none;
+}
+
 .sidebar nav {
   margin-top: 32px;
   padding-top: 24px;
