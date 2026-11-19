@@ -1,0 +1,286 @@
+/* Preview-only styles for the "prettify" mock-ups.
+   Nothing here applies unless the page is opened with ?mock=<ideas>,
+   e.g. index.html?mock=typo,pubs or ?mock=all (see mockups.js). */
+
+/* ---------- 1. Typography: serif body, serif section headings ---------- */
+
+html[data-mock~="typo"] body {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-optical-sizing: auto;
+}
+
+/* Keep small UI bits (buttons, pills, badges, nav) in the sans so they stay crisp */
+html[data-mock~="typo"] :is(.social, .sidebar nav, .pub-actions, .venue, .award-badge, .contact-block, .role, .footer, .mk-year) {
+  font-family: var(--sans);
+}
+
+html[data-mock~="typo"] .section-title {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+html[data-mock~="typo"] .lede {
+  font-size: 1.16rem;
+}
+
+html[data-mock~="typo"] .authors {
+  font-style: italic;
+  font-size: 0.98rem;
+}
+
+html[data-mock~="typo"] .authors strong {
+  font-style: normal;
+}
+
+/* ---------- 2. Publication cards: figure thumbnail + per-venue badge colours ---------- */
+
+html[data-mock~="pubs"] {
+  --v-isca: #4338a8;     --v-isca-soft: #ebe9fa;
+  --v-micro: #0f6b5c;    --v-micro-soft: #e1f2ee;
+  --v-hpca: #9a5b00;     --v-hpca-soft: #fbf0dc;
+  --v-asiaccs: #a3335d;  --v-asiaccs-soft: #f8e8ee;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-mock~="pubs"]:not([data-theme="light"]) {
+    --v-isca: #b9b2f5;     --v-isca-soft: #2c2a45;
+    --v-micro: #8fd3c7;    --v-micro-soft: #1f3532;
+    --v-hpca: #f0c674;     --v-hpca-soft: #382e1c;
+    --v-asiaccs: #f1a7c1;  --v-asiaccs-soft: #3d2530;
+  }
+}
+
+html[data-mock~="pubs"][data-theme="dark"] {
+  --v-isca: #b9b2f5;     --v-isca-soft: #2c2a45;
+  --v-micro: #8fd3c7;    --v-micro-soft: #1f3532;
+  --v-hpca: #f0c674;     --v-hpca-soft: #382e1c;
+  --v-asiaccs: #f1a7c1;  --v-asiaccs-soft: #3d2530;
+}
+
+html[data-mock~="pubs"] .venue[data-v="isca"] { color: var(--v-isca); background: var(--v-isca-soft); }
+html[data-mock~="pubs"] .venue[data-v="micro"] { color: var(--v-micro); background: var(--v-micro-soft); }
+html[data-mock~="pubs"] .venue[data-v="hpca"] { color: var(--v-hpca); background: var(--v-hpca-soft); }
+html[data-mock~="pubs"] .venue[data-v="asiaccs"] { color: var(--v-asiaccs); background: var(--v-asiaccs-soft); }
+
+html[data-mock~="pubs"] .pub {
+  grid-template-columns: 132px minmax(0, 1fr);
+  padding: 18px 0;
+}
+
+html[data-mock~="pubs"] .mk-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+html[data-mock~="pubs"] .mk-thumb img {
+  display: block;
+  width: 132px;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+/* Paper figures are black-on-white; soften them a little on the dark page */
+@media (prefers-color-scheme: dark) {
+  html[data-mock~="pubs"]:not([data-theme="light"]) .mk-thumb img { filter: brightness(0.88); border-color: transparent; }
+}
+html[data-mock~="pubs"][data-theme="dark"] .mk-thumb img { filter: brightness(0.88); border-color: transparent; }
+
+html[data-mock~="pubs"] .mk-thumb .venue {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  html[data-mock~="pubs"] .pub {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 14px;
+  }
+  html[data-mock~="pubs"] .mk-thumb img {
+    width: 96px;
+  }
+}
+
+/* ---------- 3. Subtle motion: sections fade in, cards and links lift on hover ---------- */
+
+html[data-mock~="motion"] .mk-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+html[data-mock~="motion"] .mk-reveal.mk-in {
+  opacity: 1;
+  transform: none;
+}
+
+html[data-mock~="motion"] .pub {
+  border-radius: 10px;
+  margin: 0 -14px;
+  padding-left: 14px;
+  padding-right: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+html[data-mock~="motion"] .pub:hover,
+html[data-mock~="motion"] .pub.mk-hover {
+  transform: translateY(-2px);
+  background: var(--surface);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--rule);
+}
+
+html[data-mock~="motion"] .pub:hover + .pub,
+html[data-mock~="motion"] .pub.mk-hover + .pub {
+  border-top-color: transparent;
+}
+
+html[data-mock~="motion"] .pub-btn {
+  transition: color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+html[data-mock~="motion"] .pub-btn:hover {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-mock~="motion"] .mk-reveal { opacity: 1; transform: none; }
+  html[data-mock~="motion"] .pub:hover { transform: none; }
+}
+
+/* ---------- 4. Section headers: small icon + short accent underline ---------- */
+
+html[data-mock~="heads"] .section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+}
+
+html[data-mock~="heads"] .section-title::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: var(--accent);
+  -webkit-mask: var(--mk-icon) center / contain no-repeat;
+  mask: var(--mk-icon) center / contain no-repeat;
+}
+
+html[data-mock~="heads"] .section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+html[data-mock~="heads"][data-mock~="typo"] .section-title::before {
+  width: 22px;
+  height: 22px;
+}
+
+#bio { --mk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4 3.6-7 8-7s8 3 8 7'/%3E%3C/svg%3E"); }
+#publications { --mk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h6'/%3E%3C/svg%3E"); }
+#service { --mk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11l3 3 8-8'/%3E%3Cpath d='M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9'/%3E%3C/svg%3E"); }
+#awards { --mk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='9' r='6'/%3E%3Cpath d='M8.5 14L7 22l5-3 5 3-1.5-8'/%3E%3C/svg%3E"); }
+#talks { --mk-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='2' width='6' height='12' rx='3'/%3E%3Cpath d='M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8'/%3E%3C/svg%3E"); }
+
+/* ---------- 5. Background texture: faint grain + soft accent glow ---------- */
+
+html[data-mock~="texture"] body {
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(1100px 620px at 12% -8%, var(--accent-soft), transparent 70%),
+    radial-gradient(900px 600px at 105% 30%, color-mix(in srgb, var(--accent-soft) 55%, transparent), transparent 70%);
+  background-attachment: fixed;
+}
+
+/* White grain on the dark page */
+@media (prefers-color-scheme: dark) {
+  html[data-mock~="texture"]:not([data-theme="light"]) body {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      radial-gradient(1100px 620px at 12% -8%, var(--accent-soft), transparent 70%),
+      radial-gradient(900px 600px at 105% 30%, color-mix(in srgb, var(--accent-soft) 55%, transparent), transparent 70%);
+  }
+}
+
+html[data-mock~="texture"][data-theme="dark"] body {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(1100px 620px at 12% -8%, var(--accent-soft), transparent 70%),
+    radial-gradient(900px 600px at 105% 30%, color-mix(in srgb, var(--accent-soft) 55%, transparent), transparent 70%);
+}
+
+/* ---------- 6. Talks timeline: grouped by year, dots on a line ---------- */
+
+.mk-timeline {
+  position: relative;
+  margin-left: 6px;
+  padding-left: 26px;
+  border-left: 2px solid var(--rule);
+}
+
+.mk-year {
+  position: relative;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 6px;
+  padding-top: 2px;
+}
+
+.mk-year:not(:first-child) {
+  margin-top: 22px;
+}
+
+/* Year marker: a ring on the line */
+.mk-year::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.mk-talk {
+  position: relative;
+  padding: 4px 0 6px;
+}
+
+/* Talk marker: a small filled dot */
+.mk-talk::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 0.9em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--faint);
+}
+
+.mk-talk .mk-where {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
